@@ -1,5 +1,6 @@
 export const competition = {
   id: 2003,
+  emblemUrl: "",
   area: {
     id: 2163,
     name: "Netherlands",

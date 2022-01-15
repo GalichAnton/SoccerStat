@@ -1,5 +1,5 @@
 .competitionlist__link {
-  transition: opacity 0.1s ease 0s;
+  transition: opacity 0.5s ease 0s;
   color: inherit;
   text-decoration: none;
 }
@@ -9,14 +9,16 @@
 
 .competitionlist__item {
   padding: 10px 5px 10px;
-  height: 260px;
+  height: 240px;
   align-self: center;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  border: thin solid #360b7a;
-  border-bottom: thick solid #360b7a;
-  color: grey;
+  border: 2px solid var(--green-light);
+  color: var(--black);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  background: var(--argentum);
 }
 
 .competitionlist__itemImg {

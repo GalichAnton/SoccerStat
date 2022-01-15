@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px 25px;
+  background-color: lightslategrey;
+  color: white;
+}
+
+.footer__wrapper {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.footer__link {
+   text-decoration: none;
+}
+
+
+.footer__text {
+  text-align: center;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+}

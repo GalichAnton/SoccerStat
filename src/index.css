@@ -3,15 +3,23 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+body{
+  background: #94c3cc;
+}
 
 :root {
+  /*colors*/
   --black: #3B434E;
   --white: white;
   --primary: #7653FC;
-  --primary-hover:#23116b;
+  --primary-hover: #5075d5;
   --red: #FC836D;
   --green: #1DC37E;
   --green-light: #C8F8E4;
   --font-family: "Noto Sans Display", sans-serif;
   --gray-light:#7a7777;
+  --aqua: #abead6;
+  --argentum: linear-gradient(121.57deg, #FFFFFF 18.77%, rgba(255, 255, 255, 0.66) 60.15%);
+  /*ui*/
+  --transition: all .5s ease-in-out;
 }

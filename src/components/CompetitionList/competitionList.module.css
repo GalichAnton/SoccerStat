@@ -1,0 +1,14 @@
+.competitionList{
+  display: flex;
+  flex-direction: column;
+}
+.competitionList__wrapper{
+  padding: 0;
+  margin: 10px auto 10px;
+  max-width: 1160px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 20px 20px;
+  position: relative;
+}

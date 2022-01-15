@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   competitionResponseType,
   competitionType,
@@ -21,9 +21,9 @@ const initialState: IState = {
 export const getCompetitions = createAsyncThunk(
   "competitions/getCompetitions",
   async (plan: string, thunkApi) => {
-    const data: AxiosResponse<competitionResponseType> =
+    const { data }: AxiosResponse<competitionResponseType> =
       await CompetitionService.getCompetitions(plan);
-    return data;
+    return data.competitions;
   }
 );
 
@@ -36,11 +36,10 @@ const competitionsSlice = createSlice({
       state.loading = "rejected";
     });
     builder.addCase(getCompetitions.fulfilled, (state, { payload }) => {
-      const { status, data } = payload;
-      if (status === 200) {
-        state.competitions = data.competitions;
+      if (payload) {
+        state.competitions = payload;
         state.loading = "idle";
-        console.log(data.competitions);
+        console.log(payload);
       } else {
         state.error = "error";
       }

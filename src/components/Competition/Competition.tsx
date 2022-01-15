@@ -16,7 +16,7 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
       <li className={styles.competitionlist__item}>
         <img
           className={styles.competitionlist__itemImg}
-          src={`${url}/images/${competition.id}.png`}
+          src={competition.emblemUrl ? competition.emblemUrl : "/img/ball.svg"}
           alt="item"
         />
 
