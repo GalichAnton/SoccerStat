@@ -1,29 +1,29 @@
-.teams {
+.matches {
   width: 960px;
   margin: 0 auto;
 }
 
-.teams__wrapper{
+.matches__wrapper{
 }
 
-.teams__head {
+.matches__head {
   display: grid;
 
   padding: 5px;
 
   color: white;
   border-bottom: 1px solid var(--green-light);
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr 3fr 2fr 1fr;
 }
 
-.teams__list {
+.matches__list {
   margin: 0;
   padding: 0;
 
   list-style-type: none;
 }
 
-.teams__item {
+.matches__item {
   display: grid;
 
   padding: 10px;
@@ -34,14 +34,14 @@
   color: var(--gray-light);
 
   font-weight: 900;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr  3fr 2fr 1fr;;
 }
 
-.teams__item:hover {
+.matches__item:hover {
   opacity: 0.5;
 }
 
-.teams__team {
+.matches__team {
   display: flex;
   align-items: center;
   justify-self: flex-start;
@@ -50,7 +50,7 @@
   transition: var(--transition);
 }
 
-.teams__logo {
+.matches__logo {
   width: 30px;
   height: 30px;
   margin-right: 10px;

@@ -2,6 +2,7 @@ import { AxiosResponse } from "axios";
 import { competitionResponseType } from "../ResponseTypes/competitionResponseType";
 import $competitionApi from "../api/competitionApi";
 import { teamsResponseType } from "../ResponseTypes/teamsResponseTypes";
+import { matchesResponseType } from "../ResponseTypes/matchesResponseType";
 
 export default class StatsService {
   static async getCompetitions(
@@ -14,5 +15,18 @@ export default class StatsService {
     competitionId: string
   ): Promise<AxiosResponse<teamsResponseType>> {
     return $competitionApi.get<teamsResponseType>(`${competitionId}/teams`);
+  }
+
+  static async getMatches(req: {
+    competitionId: string;
+    dateFrom?: string;
+    dateTo?: string;
+  }): Promise<AxiosResponse<matchesResponseType>> {
+    return $competitionApi.get<matchesResponseType>(
+      `${req.competitionId}/matches`,
+      {
+        params: { dateFrom: req.dateFrom, dateTo: req.dateTo },
+      }
+    );
   }
 }

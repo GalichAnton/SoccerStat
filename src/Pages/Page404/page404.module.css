@@ -1,0 +1,31 @@
+.page404__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.page404__descr{
+  color: white;
+  font-size: 32px;
+  padding: 20px;
+}
+
+.page404__img{
+  border-radius: 45px;
+  padding: 20px;
+}
+
+.page404__link{
+  display: block;
+  font-size: 32px;
+  padding: 20px;
+  background: var(--argentum);
+  text-decoration: none;
+  border-radius: 15px;
+  transition: var(--transition);
+}
+.page404__link:hover{
+  opacity: .5;
+}

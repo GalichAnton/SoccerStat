@@ -9,6 +9,7 @@ import {
 } from "../../store/selectors/selectors";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { searchActions } from "../../store/Slices/searchSlice";
+import SearchBar from "../generic/SearchBar/SearchBar";
 
 const CompetitionList = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ const CompetitionList = () => {
   }, [searchTerm]);
   return (
     <section className={styles.competitionList}>
+      <SearchBar />
       <ul className={styles.competitionList__wrapper}>
         {competitions.map((competition) => (
           <Comptetition key={competition.id} competition={competition} />

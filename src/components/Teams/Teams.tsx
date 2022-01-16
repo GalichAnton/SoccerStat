@@ -2,23 +2,38 @@ import React, { useEffect } from "react";
 import styles from "./teams.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { getTeams } from "../../store/Slices/teamsSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  filteredTeamsSelector,
+  searchSelector,
+} from "../../store/selectors/selectors";
+import { searchActions } from "../../store/Slices/searchSlice";
+import SearchBar from "../generic/SearchBar/SearchBar";
 const Teams = () => {
-  const { competitionId } = useParams();
+  const { competitionId, filter } = useParams();
   const dispatch = useAppDispatch();
-  const teams = useAppSelector((state) => state.teams.teams);
+  const searchTerm = useAppSelector(searchSelector);
+  const navigate = useNavigate();
+  const teams = useAppSelector(filteredTeamsSelector);
   useEffect(() => {
     if (competitionId) {
       dispatch(getTeams(competitionId));
     }
+    filter && dispatch(searchActions.setSearchTerm(filter));
   }, []);
+  useEffect(() => {
+    if (searchTerm) {
+      navigate(`/teams/${competitionId}/${searchTerm}`);
+    }
+  }, [searchTerm]);
   return (
     <section className={styles.teams}>
       <div className={styles.teams__wrapper}>
+        <SearchBar />
         <div className={styles.teams__head}>
-          <h2 className={styles.teams__title}>Teams</h2>
-          <h2 className={styles.teams__title}>Tag Name</h2>
-          <h2 className={styles.teams__title}>Founded</h2>
+          <h2>Teams</h2>
+          <h2>Tag Name</h2>
+          <h2>Founded</h2>
         </div>
         <ul className={styles.teams__list}>
           {teams.map((team) => (
@@ -29,10 +44,10 @@ const Teams = () => {
                   src={team.crestUrl}
                   alt="logo"
                 />
-                <span className={styles.teams__name}>{team.name}</span>
+                <span>{team.name}</span>
               </div>
-              <span className={styles.teams__tag}>{team.shortName}</span>
-              <span className={styles.teams__date}>{team.founded}</span>
+              <span>{team.tla ? team.tla : team.name}</span>
+              <span>{team.founded}</span>
             </li>
           ))}
         </ul>

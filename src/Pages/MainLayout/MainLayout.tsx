@@ -7,7 +7,6 @@ const MainLayout: FC = ({ children }) => {
   return (
     <div className={styles.mainLayout}>
       <Header />
-      <SearchBar />
       {children}
       <Footer />
     </div>
