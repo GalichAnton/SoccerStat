@@ -4,22 +4,26 @@
 }
 
 .navbar__link {
-  font-weight: 900;
-  color: white;
-  text-align: center;
   align-self: center;
+
   margin-right: 10px;
-  text-decoration: none;
+
+  text-align: center;
   white-space: nowrap;
+  text-decoration: none;
+
+  color: white;
+
+  font-weight: 900;
 }
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  /*@include large-screen-text();*/
+  /* @include large-screen-text(); */
 }
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  /*@include medium-screen-text();*/
+  /* @include medium-screen-text(); */
 }
-
-
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
 

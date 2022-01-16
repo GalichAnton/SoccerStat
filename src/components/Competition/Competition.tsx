@@ -11,7 +11,7 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
   return (
     <NavLink
       className={styles.competitionlist__link}
-      to={`/competitions/${competition.id}/teams`}
+      to={`/teams/${competition.id}`}
     >
       <li className={styles.competitionlist__item}>
         <img
@@ -21,9 +21,7 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
         />
 
         <p className={styles.competitionlist__itemName}>{competition.name}</p>
-        <p className={styles.competitionlist__itemCountry}>
-          {competition.area.name}
-        </p>
+        <p>{competition.area.name}</p>
       </li>
     </NavLink>
   );

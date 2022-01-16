@@ -3,7 +3,7 @@ import {
   competitionResponseType,
   competitionType,
 } from "../../http/ResponseTypes/competitionResponseType";
-import CompetitionService from "../../http/services/CompetitionService";
+import StatsService from "../../http/services/StatsService";
 import { AxiosResponse } from "axios";
 
 export interface IState {
@@ -22,7 +22,7 @@ export const getCompetitions = createAsyncThunk(
   "competitions/getCompetitions",
   async (plan: string, thunkApi) => {
     const { data }: AxiosResponse<competitionResponseType> =
-      await CompetitionService.getCompetitions(plan);
+      await StatsService.getCompetitions(plan);
     return data.competitions;
   }
 );

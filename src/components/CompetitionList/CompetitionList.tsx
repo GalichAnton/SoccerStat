@@ -7,8 +7,9 @@ import {
   filteredCompetitionSelector,
   searchSelector,
 } from "../../store/selectors/selectors";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { searchActions } from "../../store/Slices/searchSlice";
+
 const CompetitionList = () => {
   const dispatch = useAppDispatch();
   const competitions = useAppSelector(filteredCompetitionSelector);

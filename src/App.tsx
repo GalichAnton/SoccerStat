@@ -1,6 +1,7 @@
 import "./App.css";
 import MainPage from "./Pages/MainPage/MainPage";
 import { Routes, Route } from "react-router-dom";
+import TeamPage from "./Pages/TeamPage/TeamPage";
 function App() {
   return (
     <div className="App">
@@ -9,6 +10,7 @@ function App() {
         <Route path="competitions/" element={<MainPage />}>
           <Route path=":filter" element={<MainPage />} />
         </Route>
+        <Route path="/teams/:competitionId" element={<TeamPage />} />
       </Routes>
     </div>
   );

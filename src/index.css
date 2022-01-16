@@ -1,25 +1,28 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+
+  font-family: "Roboto", sans-serif;
 }
-body{
-  background: #94c3cc;
+
+body {
+  background: #94C3CC;
 }
 
 :root {
-  /*colors*/
+  /* colors */
   --black: #3B434E;
   --white: white;
   --primary: #7653FC;
-  --primary-hover: #5075d5;
+  --primary-hover: #5075D5;
   --red: #FC836D;
   --green: #1DC37E;
   --green-light: #C8F8E4;
   --font-family: "Noto Sans Display", sans-serif;
-  --gray-light:#7a7777;
-  --aqua: #abead6;
-  --argentum: linear-gradient(121.57deg, #FFFFFF 18.77%, rgba(255, 255, 255, 0.66) 60.15%);
-  /*ui*/
-  --transition: all .5s ease-in-out;
+  --gray-light: #7A7777;
+  --aqua: #ABEAD6;
+  --argentum: linear-gradient(121.57deg, #FFF 18.77%, rgb(255 255 255 / 66%) 60.15%);
+
+  /* ui */
+  --transition: all 0.5s ease-in-out;
 }

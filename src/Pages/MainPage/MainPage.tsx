@@ -6,7 +6,6 @@ import SearchBar from "../../components/generic/SearchBar/SearchBar";
 const MainPage = () => {
   return (
     <MainLayout>
-      <SearchBar />
       <CompetitionList />
     </MainLayout>
   );
