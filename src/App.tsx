@@ -1,11 +1,15 @@
 import "./App.css";
-import CompetitionList from "./components/CompetitionList/CompetitionList";
 import MainPage from "./Pages/MainPage/MainPage";
-
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <MainPage />
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="competitions/" element={<MainPage />}>
+          <Route path=":filter" element={<MainPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
