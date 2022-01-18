@@ -4,27 +4,34 @@ import DateBar from "../generic/DateBar/DateBar";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { matchesSelector } from "../../store/selectors/selectors";
 import { getMatches } from "../../store/Slices/matchesSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { dateParser } from "../../helpers/DateParser";
 import Loader from "../generic/Loader/Loader";
+
 const Matches = () => {
   const dispatch = useAppDispatch();
-  const { competitionId } = useParams();
+  const { competitionId, dateFrom, dateTo } = useParams();
+  const navigate = useNavigate();
   const [limit, setLimit] = useState(10);
   const matches = useAppSelector(matchesSelector);
+  const dateToRed = useAppSelector((state) => state.date.dateTo);
+  const dateFromRed = useAppSelector((state) => state.date.dateFrom);
   const loading = useAppSelector((state) => state.matches.loading);
   const error = useAppSelector((state) => state.matches.error);
+
   useEffect(() => {
     if (competitionId) {
-      dispatch(getMatches({ competitionId }));
+      dispatch(getMatches({ competitionId, dateFrom, dateTo }));
     }
   }, []);
+
   const onClickMore = () => {
     setLimit((prev) => prev + 10);
   };
+
   return (
     <section className={styles.matches}>
-      <DateBar />
+      <DateBar competitionId={competitionId} />
       {loading === "loading" ? (
         <Loader />
       ) : (

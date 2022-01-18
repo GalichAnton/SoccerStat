@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  height: 240px;
+  min-height: 240px;
   padding: 10px 5px;
 
   color: var(--black);
@@ -39,6 +39,24 @@
   font-size: 18px;
   font-weight: 900;
   line-height: 22px;
+}
+.competition__links{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+}
+.competition__link{
+  display: block;
+  background: var(--aqua);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
+  transition: var(--transition);
+}
+
+.competition__link:hover{
+  opacity: .5;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

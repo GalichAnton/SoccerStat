@@ -10,9 +10,12 @@ import {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { searchActions } from "../../store/Slices/searchSlice";
 import SearchBar from "../generic/SearchBar/SearchBar";
+import Loader from "../generic/Loader/Loader";
 
 const CompetitionList = () => {
   const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.competitions.loading);
+  const error = useAppSelector((state) => state.competitions.error);
   const competitions = useAppSelector(filteredCompetitionSelector);
   const searchTerm = useAppSelector(searchSelector);
   const navigate = useNavigate();
@@ -26,12 +29,20 @@ const CompetitionList = () => {
   }, [searchTerm]);
   return (
     <section className={styles.competitionList}>
-      <SearchBar />
-      <ul className={styles.competitionList__wrapper}>
-        {competitions.map((competition) => (
-          <Comptetition key={competition.id} competition={competition} />
-        ))}
-      </ul>
+      {loading === "loading" ? (
+        <Loader />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) : (
+        <>
+          <SearchBar />
+          <ul className={styles.competitionList__wrapper}>
+            {competitions.map((competition) => (
+              <Comptetition key={competition.id} competition={competition} />
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 };

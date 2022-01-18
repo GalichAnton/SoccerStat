@@ -4,6 +4,11 @@
 
   font-family: "Roboto", sans-serif;
 }
+a{
+  text-decoration: none;
+  color: var(--green);
+}
+
 
 body {
   background: #94C3CC;
@@ -20,7 +25,7 @@ body {
   --green-light: #C8F8E4;
   --font-family: "Noto Sans Display", sans-serif;
   --gray-light: #7A7777;
-  --aqua: #ABEAD6;
+  --aqua: #bde3da;
   --argentum: linear-gradient(121.57deg, #FFF 18.77%, rgb(255 255 255 / 66%) 60.15%);
 
   /* ui */

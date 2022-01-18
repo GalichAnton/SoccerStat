@@ -3,6 +3,7 @@ import { competitionResponseType } from "../ResponseTypes/competitionResponseTyp
 import $competitionApi from "../api/competitionApi";
 import { teamsResponseType } from "../ResponseTypes/teamsResponseTypes";
 import { matchesResponseType } from "../ResponseTypes/matchesResponseType";
+import { standingsResponseType } from "../ResponseTypes/standingsResponseType";
 
 export default class StatsService {
   static async getCompetitions(
@@ -27,6 +28,14 @@ export default class StatsService {
       {
         params: { dateFrom: req.dateFrom, dateTo: req.dateTo },
       }
+    );
+  }
+
+  static async getStandings(
+    competitionId: string
+  ): Promise<AxiosResponse<standingsResponseType>> {
+    return $competitionApi.get<standingsResponseType>(
+      `${competitionId}/standings`
     );
   }
 }

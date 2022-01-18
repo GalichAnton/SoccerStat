@@ -34,6 +34,7 @@ const competitionsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getCompetitions.rejected, (state) => {
       state.loading = "rejected";
+      state.error = "Reject Response";
     });
     builder.addCase(getCompetitions.fulfilled, (state, { payload }) => {
       if (payload) {

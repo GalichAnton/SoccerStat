@@ -6,6 +6,7 @@ export const competitionsSelector = (state: RootState) =>
   state.competitions.competitions;
 export const teamsSelector = (state: RootState) => state.teams.teams;
 export const matchesSelector = (state: RootState) => state.matches.matches;
+export const tableSelector = (state: RootState) => state.schedule.schedule;
 export const filteredCompetitionSelector = createSelector(
   [searchSelector, competitionsSelector],
   (searchTerm, competitions) => {
