@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  min-height: 240px;
+  height: 300px;
   padding: 10px 5px;
 
   color: var(--black);
@@ -29,6 +29,7 @@
   width: 150px;
   height: 150px;
   margin: 0 auto;
+  object-fit: cover;
 }
 
 .competitionlist__itemName {
@@ -48,7 +49,7 @@
 }
 .competition__link{
   display: block;
-  background: var(--aqua);
+  background: var(--primary);
   border-radius: 10px;
   padding: 10px;
   box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
@@ -59,18 +60,30 @@
   opacity: .5;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .competitionlist__itemName {
+@media screen and (max-width: 1024px) {
+  .competition__link {
     font-size: 14px;
-    line-height: 19px;
+  }
+  .competitionlist__item{
+    height: 250px;
+  }
+  .competitionlist__itemImg{
+
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 520px) {
-  .competitionlist__itemName {
-    margin: 5px auto 0;
-
-    font-size: 12px;
-    line-height: 17px;
+@media screen and (max-width: 768px) {
+  .competition__links {
+    width: 90%;
+  }
+  .competition__link {
+    padding: 5px;
+  }
+  .competitionlist__item{}
+  .competitionlist__itemImg{
+    width: 120px;
+    height: 120px;
   }
 }
+
+

@@ -34,7 +34,7 @@ const standingsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getSchedule.rejected, (state) => {
       state.loading = "rejected";
-      state.error = "Matches not Found";
+      state.error = "Table not exist";
     });
     builder.addCase(getSchedule.fulfilled, (state, { payload }) => {
       if (payload) {
@@ -43,7 +43,7 @@ const standingsSlice = createSlice({
         state.error = "";
         console.log(payload);
       } else {
-        state.error = "Matches not Found";
+        state.error = "Table not exist";
       }
     });
     builder.addCase(getSchedule.pending, (state) => {

@@ -1,7 +1,4 @@
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 
   padding: 20px 40px;
 
@@ -25,16 +22,20 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 
   width: 100%;
 }
-
+.header__linkBox{
+  display: flex;
+  width: 25%;
+  justify-content: center;
+}
 .header__link {
   display: flex;
   justify-content: space-between;
 
-  width: 15%;
+
 
   cursor: pointer;
 }

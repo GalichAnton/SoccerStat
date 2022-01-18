@@ -5,6 +5,7 @@ import teamsReducer from "./Slices/teamsSlice";
 import matchesReducer from "./Slices/matchesSlice";
 import scheduleReducer from "./Slices/scheduleSlice";
 import dateReducer from "./Slices/dateSlice";
+import teamMatchesReducer from "./Slices/teamMatchesSlice";
 export const store = configureStore({
   reducer: {
     competitions: competitionReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
     matches: matchesReducer,
     schedule: scheduleReducer,
     date: dateReducer,
+    teamMatches: teamMatchesReducer,
   },
 });
 export type AppDispatch = typeof store.dispatch;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./teams.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { getTeams } from "../../store/Slices/teamsSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   filteredTeamsSelector,
   searchSelector,
@@ -23,7 +23,7 @@ const Teams = () => {
   }, []);
   useEffect(() => {
     if (searchTerm) {
-      navigate(`/teams/${competitionId}/${searchTerm}`);
+      navigate(`${searchTerm}`);
     }
   }, [searchTerm]);
   return (
@@ -32,22 +32,26 @@ const Teams = () => {
         <SearchBar />
         <div className={styles.teams__head}>
           <h2>Teams</h2>
-          <h2>Tag Name</h2>
+          <h2>Tag</h2>
           <h2>Founded</h2>
         </div>
         <ul className={styles.teams__list}>
           {teams.map((team) => (
             <li key={team.id} className={styles.teams__item}>
-              <div className={styles.teams__team}>
-                <img
-                  className={styles.teams__logo}
-                  src={team.crestUrl}
-                  alt="logo"
-                />
-                <span>{team.name}</span>
-              </div>
-              <span>{team.tla ? team.tla : team.name}</span>
-              <span>{team.founded}</span>
+              <Link to={`/teams/${team.id}/matches`}>
+                <div className={styles.teams__team}>
+                  <img
+                    className={styles.teams__logo}
+                    src={team.crestUrl}
+                    alt="logo"
+                  />
+                  <span>{team.name}</span>
+                </div>
+              </Link>
+              <span className={styles.teams__info}>
+                {team.tla ? team.tla : team.name}
+              </span>
+              <span className={styles.teams__info}>{team.founded}</span>
             </li>
           ))}
         </ul>

@@ -7,6 +7,7 @@ import { getMatches } from "../../store/Slices/matchesSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { dateParser } from "../../helpers/DateParser";
 import Loader from "../generic/Loader/Loader";
+import Match from "../Match/Match";
 
 const Matches = () => {
   const dispatch = useAppDispatch();
@@ -14,8 +15,6 @@ const Matches = () => {
   const navigate = useNavigate();
   const [limit, setLimit] = useState(10);
   const matches = useAppSelector(matchesSelector);
-  const dateToRed = useAppSelector((state) => state.date.dateTo);
-  const dateFromRed = useAppSelector((state) => state.date.dateFrom);
   const loading = useAppSelector((state) => state.matches.loading);
   const error = useAppSelector((state) => state.matches.error);
 
@@ -31,7 +30,7 @@ const Matches = () => {
 
   return (
     <section className={styles.matches}>
-      <DateBar competitionId={competitionId} />
+      <DateBar instanseId={competitionId} instanseType={"competitions"} />
       {loading === "loading" ? (
         <Loader />
       ) : (
@@ -46,19 +45,9 @@ const Matches = () => {
           </div>
           <ul className={styles.matches__list}>
             {matches.length !== 0 ? (
-              matches.slice(0, limit).map((match) => (
-                <li key={match.id} className={styles.matches__item}>
-                  <span>{dateParser(match.utcDate)}</span>
-                  <span>{match.homeTeam.name}</span>
-                  <span>|</span>
-                  <span>{match.awayTeam.name}</span>
-                  <span>{match.status}</span>
-                  <span>
-                    {match.score.fullTime.homeTeam} :{" "}
-                    {match.score.fullTime.awayTeam}
-                  </span>
-                </li>
-              ))
+              matches
+                .slice(0, limit)
+                .map((match) => <Match key={match.id} match={match} />)
             ) : (
               <h2>{error}</h2>
             )}

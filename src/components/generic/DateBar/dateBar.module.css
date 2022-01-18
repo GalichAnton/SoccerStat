@@ -6,10 +6,17 @@
   justify-content: center;
 }
 
+.dateBar__inputContainer{
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
 .dateBar__input {
    color: inherit;
    padding: 5px;
-   margin-right: 10px;
    outline-style: none;
    border: none;
    border-radius: 8px;
@@ -42,4 +49,11 @@
 
 .dateBar__btn:hover{
   opacity: .5;
+}
+
+@media screen and (max-width: 768px) {
+  .dateBar{
+    flex-direction: column;
+
+  }
 }

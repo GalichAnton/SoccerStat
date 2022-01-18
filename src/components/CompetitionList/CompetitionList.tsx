@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { getCompetitions } from "../../store/Slices/competitionSlice";
 import styles from "./competitionList.module.css";
@@ -11,6 +12,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { searchActions } from "../../store/Slices/searchSlice";
 import SearchBar from "../generic/SearchBar/SearchBar";
 import Loader from "../generic/Loader/Loader";
+import { fadeInUp, stagger } from "../../animation";
 
 const CompetitionList = () => {
   const dispatch = useAppDispatch();
@@ -36,11 +38,24 @@ const CompetitionList = () => {
       ) : (
         <>
           <SearchBar />
-          <ul className={styles.competitionList__wrapper}>
-            {competitions.map((competition) => (
-              <Comptetition key={competition.id} competition={competition} />
-            ))}
-          </ul>
+          <motion.div
+            variants={stagger}
+            initial="initial"
+            animate="animate"
+            className="relative grid grid-cols-12 gap-4 my-3"
+          >
+            <ul className={styles.competitionList__wrapper}>
+              {competitions.map((competition) => (
+                <motion.div
+                  variants={fadeInUp}
+                  key={competition.id}
+                  className="col-span-12 p-2 bg-gray-500 rounded-lg dark:bg-black-200 sm:col-span-6 lg:col-span-4"
+                >
+                  <Comptetition competition={competition} />
+                </motion.div>
+              ))}
+            </ul>
+          </motion.div>
         </>
       )}
     </section>

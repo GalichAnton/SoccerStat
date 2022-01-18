@@ -4,9 +4,20 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__wrapper}>
-        <h2 className={styles.footer__title}>Copyright &copy;</h2>
-        <p className={styles.footer__text}>
-          Football data provided by the
+        <span>Copyright &copy;</span>
+        <span>
+          Created by{" "}
+          <a
+            className={styles.footer__link}
+            href="https://github.com/GalichAnton"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Anton Galich
+          </a>
+        </span>
+        <div className={styles.footer__text}>
+          <p>API</p>
           <a
             className={styles.footer__link}
             href="https://www.football-data.org/"
@@ -15,8 +26,7 @@ const Footer = () => {
           >
             Football-Data.org
           </a>
-          API
-        </p>
+        </div>
       </div>
     </footer>
   );

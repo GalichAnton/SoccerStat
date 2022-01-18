@@ -6,13 +6,14 @@
 }
 a{
   text-decoration: none;
-  color: var(--green);
+  color: var(--green-light);
 }
 
 
 body {
   background: #94C3CC;
 }
+
 
 :root {
   /* colors */

@@ -1,0 +1,48 @@
+.teamMatches {
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+
+.teamMatches__head {
+  display: grid;
+
+  padding: 5px;
+
+  color: white;
+  border-bottom: 1px solid var(--green-light);
+  grid-template-columns: 2fr 3fr 1fr 3fr 2fr 1fr;
+}
+
+.teamMatches__list {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .teamMatches__head span{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .teamMatches__head span{
+    font-size: 16px;
+  }
+  .teamMatches__head{
+    grid-template-columns: 2fr 3fr 1fr 3fr  1fr;
+  }
+  .teamMatches__status{
+    display: none;
+  }
+  .teamMatches{
+    width: 90%;
+  }
+}
