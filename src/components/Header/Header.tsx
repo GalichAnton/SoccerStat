@@ -13,6 +13,7 @@ const Header: FC = () => {
   const team = useAppSelector((state) =>
     state.teams.teams.find((team) => team.id === Number(teamId))
   );
+  const url = process.env.REACT_APP_PUBLIC_URL || "http://localhost:3000";
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -20,7 +21,7 @@ const Header: FC = () => {
           <div className={styles.header__link}>
             <img
               className={styles.header__logo}
-              src="/img/logo.png"
+              src={`${url}/img/logo.png`}
               alt="logo"
             />
             <h1 className={styles.header__title}>

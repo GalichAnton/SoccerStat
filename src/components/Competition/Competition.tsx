@@ -8,6 +8,7 @@ interface IProps {
 }
 
 export const Comptetition: FC<IProps> = ({ competition }) => {
+  const url = process.env.REACT_APP_PUBLIC_URL || "http://localhost:3000";
   return (
     <li className={styles.competitionlist__item}>
       <NavLink
@@ -16,7 +17,11 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
       >
         <img
           className={styles.competitionlist__itemImg}
-          src={competition.emblemUrl ? competition.emblemUrl : "/img/ball.svg"}
+          src={
+            competition.emblemUrl
+              ? competition.emblemUrl
+              : `${url}/img/ball.svg`
+          }
           alt="item"
         />
       </NavLink>

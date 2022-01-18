@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route index element={<MainPage />} />
         <Route path="competitions/" element={<MainPage />}>
-          <Route path=":filter" element={<MainPage />} />
+          <Route path="competitions/:filter" element={<MainPage />} />
         </Route>
         <Route
           path="competitions/:competitionId/matches/"
