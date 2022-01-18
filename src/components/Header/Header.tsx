@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./header.module.css";
 import { Link, useParams } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux-hooks";
+import logo from "../../../public/img/logo.png";
 const Header: FC = () => {
   const { competitionId, teamId } = useParams();
   const competition = useAppSelector((state) =>
@@ -13,17 +14,13 @@ const Header: FC = () => {
   const team = useAppSelector((state) =>
     state.teams.teams.find((team) => team.id === Number(teamId))
   );
-  const url = process.env.REACT_APP_PUBLIC_URL || "http://localhost:3000";
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <Link to={"/competitions"} className={styles.header__linkBox}>
           <div className={styles.header__link}>
-            <img
-              className={styles.header__logo}
-              src={`${url}/img/logo.png`}
-              alt="logo"
-            />
+            <img className={styles.header__logo} src={logo} alt="logo" />
             <h1 className={styles.header__title}>
               {competition?.name || team?.name || "Soccer Stat"}
             </h1>

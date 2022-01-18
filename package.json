@@ -1,7 +1,7 @@
 {
   "name": "starterpack",
   "version": "0.1.0",
-  "homepage": "https://galichanton.github.io/SoccerStat/competitions/",
+  "homepage": "https://galichanton.github.io/SoccerStat",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
