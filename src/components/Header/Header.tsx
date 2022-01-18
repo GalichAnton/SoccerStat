@@ -2,7 +2,7 @@ import { FC } from "react";
 import styles from "./header.module.css";
 import { Link, useParams } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux-hooks";
-import logo from "../../../public/img/logo.png";
+import logo from "../../assets/img/logo.png";
 const Header: FC = () => {
   const { competitionId, teamId } = useParams();
   const competition = useAppSelector((state) =>
