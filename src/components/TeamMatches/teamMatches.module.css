@@ -3,8 +3,6 @@
   margin: 0 auto;
 }
 
-
-
 .teamMatches__head {
   display: grid;
 
@@ -22,27 +20,26 @@
   list-style-type: none;
 }
 
-
-
-
-
 @media screen and (max-width: 1024px) {
-  .teamMatches__head span{
+  .teamMatches__head span {
     font-size: 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .teamMatches__head span{
+  .teamMatches__head span {
     font-size: 16px;
   }
-  .teamMatches__head{
+
+  .teamMatches__head {
     grid-template-columns: 2fr 3fr 1fr 3fr  1fr;
   }
-  .teamMatches__status{
+
+  .teamMatches__status {
     display: none;
   }
-  .teamMatches{
+
+  .teamMatches {
     width: 90%;
   }
 }

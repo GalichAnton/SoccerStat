@@ -4,16 +4,16 @@
 
   font-family: "Roboto", sans-serif;
 }
-a{
+
+a {
   text-decoration: none;
+
   color: var(--green-light);
 }
-
 
 body {
   background: #94C3CC;
 }
-
 
 :root {
   /* colors */
@@ -26,10 +26,9 @@ body {
   --green-light: #C8F8E4;
   --font-family: "Noto Sans Display", sans-serif;
   --gray-light: #7A7777;
-  --aqua: #bde3da;
+  --aqua: #BDE3DA;
   --argentum: linear-gradient(121.57deg, #FFF 18.77%, rgb(255 255 255 / 66%) 60.15%);
 
   /* ui */
   --transition: all 0.5s ease-in-out;
 }
-

@@ -1,16 +1,19 @@
-.loader{
-  animation:loading 2s ease-in-out infinite;
+.loader {
+  animation: loading 2s ease-in-out infinite;
+
   font-size: 43px;
 }
 
 @keyframes loading {
   0% {
-    color: #fff;
+    color: #FFF;
   }
+
   50% {
     color: #777;
   }
+
   100% {
-    color: #fff;
+    color: #FFF;
   }
 }

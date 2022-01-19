@@ -22,7 +22,7 @@ const Matches = () => {
     if (competitionId) {
       dispatch(getMatches({ competitionId, dateFrom, dateTo }));
     }
-  }, []);
+  }, [dateFrom, dateTo]);
 
   const onClickMore = () => {
     setLimit((prev) => prev + 10);

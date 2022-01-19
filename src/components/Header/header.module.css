@@ -1,5 +1,4 @@
 .header {
-
   padding: 20px 40px;
 
   color: white;
@@ -21,23 +20,30 @@
 .header__wrapper {
   display: flex;
   align-items: center;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 
   width: 100%;
 }
-.header__linkBox{
+
+.header__linkBox {
   display: flex;
+  justify-content: flex-end;
+
   width: 25%;
-  justify-content: center;
+
+  transition: var(--transition);
+
+  font-size: 24px;
+  font-weight: 900;
 }
+
+.header__linkBox:hover {
+  opacity: 0.5;
+}
+
 .header__link {
   display: flex;
   justify-content: space-between;
-
-
-
-  cursor: pointer;
 }
 
 .header__logo {

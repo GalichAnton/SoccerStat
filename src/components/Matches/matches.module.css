@@ -3,9 +3,6 @@
   margin: 0 auto;
 }
 
-.matches__wrapper{
-}
-
 .matches__head {
   display: grid;
 
@@ -22,8 +19,6 @@
 
   list-style-type: none;
 }
-
-
 
 .matches__team {
   display: flex;

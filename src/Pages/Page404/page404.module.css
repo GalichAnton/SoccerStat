@@ -1,31 +1,40 @@
-.page404__wrapper{
+.page404__wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+
   padding: 50px;
 }
 
-.page404__descr{
+.page404__descr {
+  padding: 20px;
+
   color: white;
+
   font-size: 32px;
-  padding: 20px;
 }
 
-.page404__img{
+.page404__img {
+  padding: 20px;
+
   border-radius: 45px;
-  padding: 20px;
 }
 
-.page404__link{
+.page404__link {
   display: block;
-  font-size: 32px;
+
   padding: 20px;
-  background: var(--argentum);
-  text-decoration: none;
-  border-radius: 15px;
+
   transition: var(--transition);
+  text-decoration: none;
+
+  border-radius: 15px;
+  background: var(--argentum);
+
+  font-size: 32px;
 }
-.page404__link:hover{
-  opacity: .5;
+
+.page404__link:hover {
+  opacity: 0.5;
 }

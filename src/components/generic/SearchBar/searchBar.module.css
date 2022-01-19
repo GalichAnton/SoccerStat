@@ -34,9 +34,10 @@
 }
 
 .searchBar__input {
+  width: 250px;
   margin-right: 10px;
   padding: 5px;
-  width: 250px;
+
   border: none;
   border: 1.5px solid #AAA;
   border-radius: 8px;
@@ -48,10 +49,10 @@
 
 @media screen and (max-width: 1024px) {
   .searchBar {
-    width: 250px
+    width: 250px;
   }
-  .searchBar__input{
-    width: 200px
+
+  .searchBar__input {
+    width: 200px;
   }
 }
-

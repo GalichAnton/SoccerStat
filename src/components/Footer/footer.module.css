@@ -3,8 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
 
-
-
   color: white;
   background-color: lightslategrey;
 }
@@ -12,23 +10,25 @@
 .footer__wrapper {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 25px 50px;
+
   width: 100%;
+  padding: 25px 50px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .footer__link {
   margin-left: 15px;
 }
-.footer__text{
+
+.footer__text {
   display: flex;
 }
 
 @media screen and (max-width: 768px) {
-  .footer__wrapper{
+  .footer__wrapper {
     font-size: 14px;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3,1fr);
+    grid-template-rows: repeat(3, 1fr);
     justify-items: flex-start;
   }
 }

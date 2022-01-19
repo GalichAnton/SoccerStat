@@ -41,32 +41,40 @@
   font-weight: 900;
   line-height: 22px;
 }
-.competition__links{
+
+.competition__links {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
+
   width: 80%;
-}
-.competition__link{
-  display: block;
-  background: var(--primary);
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
-  transition: var(--transition);
+  margin: 0 auto;
 }
 
-.competition__link:hover{
-  opacity: .5;
+.competition__link {
+  display: block;
+
+  padding: 10px;
+
+  transition: var(--transition);
+
+  border-radius: 10px;
+  background: var(--primary);
+  box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
+}
+
+.competition__link:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 1024px) {
   .competition__link {
     font-size: 14px;
   }
-  .competitionlist__item{
+
+  .competitionlist__item {
     height: 250px;
   }
+
   .competitionlist__itemImg{
 
   }
@@ -76,14 +84,14 @@
   .competition__links {
     width: 90%;
   }
+
   .competition__link {
     padding: 5px;
   }
   .competitionlist__item{}
-  .competitionlist__itemImg{
+
+  .competitionlist__itemImg {
     width: 120px;
     height: 120px;
   }
 }
-
-
