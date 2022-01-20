@@ -1,5 +1,6 @@
 {
   "name": "starterpack",
+  "homepage": "https://galichanton.github.io/SoccerStat/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
