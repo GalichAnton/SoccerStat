@@ -4,7 +4,7 @@
   justify-content: space-between;
 
   color: white;
-  background-color: lightslategrey;
+  background: var(--header-footer);
 }
 
 .footer__wrapper {
