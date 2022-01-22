@@ -34,3 +34,28 @@
   height: 30px;
   margin-right: 10px;
 }
+
+.matches__button {
+  padding: 7px 10px;
+
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+
+
+  color: white;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.matches__button:hover {
+  opacity: 0.6;
+}
+
+.matches__button_disabled {
+  opacity: 0.6;
+}

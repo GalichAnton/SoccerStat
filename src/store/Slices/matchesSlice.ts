@@ -44,7 +44,6 @@ const matchesSlice = createSlice({
         state.matches = payload;
         state.loading = "idle";
         state.error = "";
-        console.log(payload);
       } else {
         state.error = "Matches not Found";
       }

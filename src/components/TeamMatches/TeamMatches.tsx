@@ -30,7 +30,7 @@ const TeamteamMatches = () => {
       {loading === "loading" ? (
         <Loader />
       ) : teamMatches.length ? (
-        <div className={styles.teamMatches__wrapper}>
+        <div>
           <div className={styles.teamMatches__head}>
             <span>Date</span>
             <span>Home</span>
@@ -44,10 +44,17 @@ const TeamteamMatches = () => {
               <Match key={match.id} match={match} teamId={teamId} />
             ))}
           </ul>
-          <button onClick={onClickMore}>More</button>
+          {teamMatches.length > limit && (
+            <button
+              className={styles.teamMatches__button}
+              onClick={onClickMore}
+            >
+              More
+            </button>
+          )}
         </div>
       ) : (
-        "Sorry there is no information on this competition ;("
+        "Sorry there is no information on this team for this date ;("
       )}
     </section>
   );

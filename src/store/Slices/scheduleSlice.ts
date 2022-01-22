@@ -34,16 +34,17 @@ const standingsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getSchedule.rejected, (state) => {
       state.loading = "rejected";
-      state.error = "Table not exist";
+      state.error =
+        "Sorry, there is no table for this competition in the database yet";
     });
     builder.addCase(getSchedule.fulfilled, (state, { payload }) => {
       if (payload) {
         state.schedule = payload;
         state.loading = "idle";
         state.error = "";
-        console.log(payload);
       } else {
-        state.error = "Table not exist";
+        state.error =
+          "Sorry, there is no table for this competition in the database yet";
       }
     });
     builder.addCase(getSchedule.pending, (state) => {

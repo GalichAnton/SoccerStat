@@ -10,6 +10,7 @@ import {
 } from "../../store/selectors/selectors";
 import SearchBar from "../generic/SearchBar/SearchBar";
 import { searchActions } from "../../store/Slices/searchSlice";
+import Error from "../generic/Error/Error";
 const Schedule = () => {
   const { competitionId, filter } = useParams();
   const dispatch = useAppDispatch();
@@ -31,48 +32,55 @@ const Schedule = () => {
   }, [searchTerm]);
   return (
     <section className={styles.schedule}>
-      <SearchBar />
       {loading === "loading" ? (
         <Loader />
       ) : (
-        <div className={styles.schedule__wrapper}>
-          <div className={styles.schedule__head}>
-            <span>№</span>
-            <span>Team</span>
-            <span>M</span>
-            <span>W</span>
-            <span>T</span>
-            <span>L</span>
-            <span>P</span>
-          </div>
+        <div>
           {error ? (
-            <h1>{error}</h1>
+            <Error>{error}</Error>
           ) : (
-            <ul className={styles.schedule__list}>
-              {table?.map((item) => (
-                <Link key={item.team.id} to={`/teams/${item.team.id}/matches`}>
-                  <li className={styles.schedule__item}>
-                    <span>{item.position}</span>
-                    <div className={styles.schedule__teamItem}>
-                      <img
-                        src={item.team.crestUrl}
-                        alt="teamLogo"
-                        className={styles.schedule__teamLogo}
-                      />
-                      <span>{item.team.name}</span>
-                    </div>
+            <>
+              <SearchBar />
+              <div className={styles.schedule__head}>
+                <span>№</span>
+                <span>Team</span>
+                <span>M</span>
+                <span>W</span>
+                <span>T</span>
+                <span>L</span>
+                <span>P</span>
+              </div>
+              <ul className={styles.schedule__list}>
+                {table?.map((item) => (
+                  <Link
+                    key={item.team.id}
+                    to={`/teams/${item.team.id}/matches`}
+                  >
+                    <li className={styles.schedule__item}>
+                      <span>{item.position}</span>
+                      <div className={styles.schedule__teamItem}>
+                        <img
+                          src={item.team.crestUrl}
+                          alt="teamLogo"
+                          className={styles.schedule__teamLogo}
+                        />
+                        <span>{item.team.name}</span>
+                      </div>
 
-                    <span className={styles.schedule__info}>
-                      {item.playedGames}
-                    </span>
-                    <span className={styles.schedule__info}>{item.won}</span>
-                    <span className={styles.schedule__info}>{item.draw}</span>
-                    <span className={styles.schedule__info}>{item.lost}</span>
-                    <span className={styles.schedule__info}>{item.points}</span>
-                  </li>
-                </Link>
-              ))}
-            </ul>
+                      <span className={styles.schedule__info}>
+                        {item.playedGames}
+                      </span>
+                      <span className={styles.schedule__info}>{item.won}</span>
+                      <span className={styles.schedule__info}>{item.draw}</span>
+                      <span className={styles.schedule__info}>{item.lost}</span>
+                      <span className={styles.schedule__info}>
+                        {item.points}
+                      </span>
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </>
           )}
         </div>
       )}
