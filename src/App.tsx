@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route index element={<MainPage />} />
         <Route
-          path="competitions/:competitionId/matches/"
+          path="/competitions/:competitionId/matches/"
           element={<MatchesPage />}
         >
           <Route path=":dateFrom/:dateTo" element={<MatchesPage />} />
@@ -23,12 +23,12 @@ function App() {
           <Route path=":filter" element={<SchedulePage />} />
         </Route>
         <Route
-          path="competitions/:competitionId/teams/"
+          path="/competitions/:competitionId/teams/"
           element={<TeamPage />}
         />
         <Route path="teams/:teamId/matches" element={<TeamMatchesPage />} />
 
-        {/* <Route path="*" element={<Navigate to="/" />} />*/}
+        {/* <Route path="*" element={<Navigate to="/SoccerStat" />} />*/}
       </Routes>
     </div>
   );
