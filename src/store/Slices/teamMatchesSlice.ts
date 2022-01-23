@@ -22,7 +22,7 @@ const initialState: IState = {
 export const getTeamMatches = createAsyncThunk(
   "teamMatches/getTeamMatches",
   async (
-    req: { teamId: string; dateFrom?: string; dateTo?: string },
+    req: { teamId: string; dateFrom: string | null; dateTo: string | null },
     thunkApi
   ) => {
     const { data }: AxiosResponse<teamMatchesResponseType> =

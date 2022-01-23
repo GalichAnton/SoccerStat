@@ -15,7 +15,6 @@ const Header: FC = () => {
   const team = useAppSelector((state) =>
     state.teams.teams.find((team) => team.id === Number(teamId))
   );
-  console.log(pathname);
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -26,8 +25,8 @@ const Header: FC = () => {
           </h1>
         </div>
 
-        {pathname !== "/competitions/" ? (
-          <Link to={"/competitions"} className={styles.header__linkBox}>
+        {pathname !== "/" ? (
+          <Link to={"/"} className={styles.header__linkBox}>
             {" "}
             Back{" "}
           </Link>

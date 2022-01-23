@@ -4,24 +4,26 @@ import DateBar from "../generic/DateBar/DateBar";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { matchesSelector } from "../../store/selectors/selectors";
 import { getMatches } from "../../store/Slices/matchesSlice";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Loader from "../generic/Loader/Loader";
 import Match from "../Match/Match";
 import Error from "../generic/Error/Error";
 
 const Matches = () => {
   const dispatch = useAppDispatch();
-  const { competitionId, dateFrom, dateTo } = useParams();
+  const { competitionId } = useParams();
   const [limit, setLimit] = useState(10);
   const matches = useAppSelector(matchesSelector);
   const loading = useAppSelector((state) => state.matches.loading);
   const error = useAppSelector((state) => state.matches.error);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
+    const dateFrom = searchParams.get("dateFrom")!;
+    const dateTo = searchParams.get("dateTo")!;
     if (competitionId) {
       dispatch(getMatches({ competitionId, dateFrom, dateTo }));
     }
-  }, [dateFrom, dateTo]);
+  }, [searchParams]);
 
   const onClickMore = () => {
     setLimit((prev) => prev + 10);

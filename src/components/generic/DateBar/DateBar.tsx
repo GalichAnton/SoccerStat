@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, SyntheticEvent } from "react";
 import styles from "./dateBar.module.css";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 import { dateActions } from "../../../store/Slices/dateSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 interface IProps {
   instanseType?: string;
   instanseId?: string;
@@ -12,6 +12,7 @@ const DateBar: FC<IProps> = ({ instanseType, instanseId }) => {
   const navigate = useNavigate();
   const dateTo = useAppSelector((state) => state.date.dateTo);
   const dateFrom = useAppSelector((state) => state.date.dateFrom);
+  const [searchParams, setSearchParams] = useSearchParams();
   const onChangeDateTo = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(dateActions.setDateTo(e.currentTarget.value));
   };
@@ -22,7 +23,7 @@ const DateBar: FC<IProps> = ({ instanseType, instanseId }) => {
   const filterByDate = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (new Date(dateFrom) <= new Date(dateTo)) {
-      navigate(`/${instanseType}/${instanseId}/matches/${dateFrom}/${dateTo}`);
+      setSearchParams({ dateFrom, dateTo });
     } else {
       alert("Incorrect date");
     }

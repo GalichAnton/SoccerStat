@@ -3,7 +3,7 @@ import styles from "./schedule.module.css";
 import Loader from "../generic/Loader/Loader";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { getSchedule } from "../../store/Slices/scheduleSlice";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import {
   filteredTableTeamsSelector,
   searchSelector,
@@ -12,24 +12,25 @@ import SearchBar from "../generic/SearchBar/SearchBar";
 import { searchActions } from "../../store/Slices/searchSlice";
 import Error from "../generic/Error/Error";
 const Schedule = () => {
-  const { competitionId, filter } = useParams();
+  const { competitionId } = useParams();
   const dispatch = useAppDispatch();
-  const searchTerm = useAppSelector(searchSelector);
-  const navigate = useNavigate();
+  const filter = useAppSelector(searchSelector);
   const loading = useAppSelector((state) => state.schedule.loading);
   const error = useAppSelector((state) => state.schedule.error);
   const table = useAppSelector(filteredTableTeamsSelector);
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     if (competitionId) {
       dispatch(getSchedule(competitionId));
     }
-    filter && dispatch(searchActions.setSearchTerm(filter));
+    const filter = searchParams.get("filter");
+    filter && dispatch(searchActions.setFilter(filter));
   }, []);
   useEffect(() => {
-    if (searchTerm) {
-      navigate(`${searchTerm}`);
-    }
-  }, [searchTerm]);
+    if (filter) {
+      setSearchParams({ filter });
+    } else setSearchParams({});
+  }, [filter]);
   return (
     <section className={styles.schedule}>
       {loading === "loading" ? (

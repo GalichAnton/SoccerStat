@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IState {
-  searchTerm: string;
+  filter: string;
 }
 
 const initialState: IState = {
-  searchTerm: "",
+  filter: "",
 };
 
 const searchSlice = createSlice({
-  name: "competitions",
+  name: "search",
   initialState,
   reducers: {
-    setSearchTerm(state, action: PayloadAction<string>) {
-      state.searchTerm = action.payload;
+    setFilter(state, action: PayloadAction<string>) {
+      state.filter = action.payload;
     },
   },
 });

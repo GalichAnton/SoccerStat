@@ -22,8 +22,8 @@ export default class StatsService {
 
   static async getMatches(req: {
     competitionId: string;
-    dateFrom?: string;
-    dateTo?: string;
+    dateFrom: string | null;
+    dateTo: string | null;
   }): Promise<AxiosResponse<matchesResponseType>> {
     return $competitionApi.get<matchesResponseType>(
       `${req.competitionId}/matches`,
@@ -43,8 +43,8 @@ export default class StatsService {
 
   static async getTeamMatches(req: {
     teamId: string;
-    dateFrom?: string;
-    dateTo?: string;
+    dateFrom: string | null;
+    dateTo: string | null;
   }): Promise<AxiosResponse<teamMatchesResponseType>> {
     return $teamsApi.get<teamMatchesResponseType>(`${req.teamId}/matches`, {
       params: {

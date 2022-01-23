@@ -21,7 +21,11 @@ const initialState: IState = {
 export const getMatches = createAsyncThunk(
   "matches/getMatches",
   async (
-    req: { competitionId: string; dateFrom?: string; dateTo?: string },
+    req: {
+      competitionId: string;
+      dateFrom: string | null;
+      dateTo: string | null;
+    },
     thunkApi
   ) => {
     const { data }: AxiosResponse<matchesResponseType> =

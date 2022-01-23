@@ -10,9 +10,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<MainPage />} />
-        <Route path="competitions/" element={<MainPage />}>
-          <Route path=":filter" element={<MainPage />} />
-        </Route>
         <Route
           path="competitions/:competitionId/matches/"
           element={<MatchesPage />}
@@ -20,18 +17,18 @@ function App() {
           <Route path=":dateFrom/:dateTo" element={<MatchesPage />} />
         </Route>
         <Route
-          path="competitions/:competitionId/schedule/"
+          path="/competitions/:competitionId/schedule/"
           element={<SchedulePage />}
         >
           <Route path=":filter" element={<SchedulePage />} />
         </Route>
-        <Route path="competitions/:competitionId/teams/" element={<TeamPage />}>
-          <Route path=":filter" element={<TeamPage />} />
-        </Route>
-        <Route path="teams/:teamId/matches" element={<TeamMatchesPage />}>
-          <Route path=":dateFrom/:dateTo" element={<TeamMatchesPage />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route
+          path="competitions/:competitionId/teams/"
+          element={<TeamPage />}
+        />
+        <Route path="teams/:teamId/matches" element={<TeamMatchesPage />} />
+
+        {/* <Route path="*" element={<Navigate to="/" />} />*/}
       </Routes>
     </div>
   );

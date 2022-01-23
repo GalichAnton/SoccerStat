@@ -5,9 +5,9 @@ import { searchSelector } from "../../../store/selectors/selectors";
 import { searchActions } from "../../../store/Slices/searchSlice";
 const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
-  const searchTerm = useAppSelector(searchSelector);
+  const filter = useAppSelector(searchSelector);
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(searchActions.setSearchTerm(e.currentTarget.value));
+    dispatch(searchActions.setFilter(e.currentTarget.value));
   };
 
   return (
@@ -16,7 +16,7 @@ const SearchBar: FC = () => {
         type="text"
         className={styles.searchBar__input}
         placeholder="Search"
-        value={searchTerm}
+        value={filter}
         onChange={onChangeHandler}
       />
       <button className={styles.searchBar__button}>Найти</button>

@@ -20,14 +20,6 @@
   list-style-type: none;
 }
 
-.matches__team {
-  display: flex;
-  align-items: center;
-  justify-self: flex-start;
-
-  cursor: pointer;
-  transition: var(--transition);
-}
 
 .matches__logo {
   width: 30px;

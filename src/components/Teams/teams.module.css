@@ -30,7 +30,7 @@
   cursor: pointer;
   transition: var(--transition);
 
-  color: var(--gray-light);
+  color: var(--green-light);
 
   font-weight: 900;
   grid-template-columns: 3fr 1fr 1fr;

@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import styles from "./teams.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { getTeams } from "../../store/Slices/teamsSlice";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import {
   filteredTeamsSelector,
   searchSelector,
@@ -10,25 +15,26 @@ import {
 import { searchActions } from "../../store/Slices/searchSlice";
 import SearchBar from "../generic/SearchBar/SearchBar";
 const Teams = () => {
-  const { competitionId, filter } = useParams();
+  const { competitionId } = useParams();
   const dispatch = useAppDispatch();
-  const searchTerm = useAppSelector(searchSelector);
-  const navigate = useNavigate();
+  const filter = useAppSelector(searchSelector);
+  const [searchParams, setSearchParams] = useSearchParams();
   const teams = useAppSelector(filteredTeamsSelector);
   useEffect(() => {
     if (competitionId) {
       dispatch(getTeams(competitionId));
     }
-    filter && dispatch(searchActions.setSearchTerm(filter));
+    const filter = searchParams.get("filter");
+    filter && dispatch(searchActions.setFilter(filter));
   }, []);
   useEffect(() => {
-    if (searchTerm) {
-      navigate(`${searchTerm}`);
-    }
-  }, [searchTerm]);
+    if (filter) {
+      setSearchParams({ filter });
+    } else setSearchParams({});
+  }, [filter]);
   return (
     <section className={styles.teams}>
-      <div className={styles.teams__wrapper}>
+      <div>
         <SearchBar />
         <div className={styles.teams__head}>
           <h2>Teams</h2>

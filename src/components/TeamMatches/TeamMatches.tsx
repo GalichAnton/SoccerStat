@@ -4,22 +4,24 @@ import DateBar from "../generic/DateBar/DateBar";
 import Loader from "../generic/Loader/Loader";
 import { dateParser } from "../../helpers/DateParser";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { getTeamMatches } from "../../store/Slices/teamMatchesSlice";
 import Match from "../Match/Match";
 const TeamteamMatches = () => {
   const dispatch = useAppDispatch();
-  const { teamId, dateFrom, dateTo } = useParams();
+  const { teamId } = useParams();
   const [limit, setLimit] = useState(10);
   const teamMatches = useAppSelector((state) => state.teamMatches.matches);
   const loading = useAppSelector((state) => state.teamMatches.loading);
   const error = useAppSelector((state) => state.teamMatches.error);
-  console.log(teamId, dateFrom, dateTo);
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
+    const dateFrom = searchParams.get("dateFrom");
+    const dateTo = searchParams.get("dateTo");
     if (teamId) {
       dispatch(getTeamMatches({ teamId, dateFrom, dateTo }));
     }
-  }, [dateFrom, dateTo]);
+  }, [searchParams]);
 
   const onClickMore = () => {
     setLimit((prev) => prev + 10);

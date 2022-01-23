@@ -12,7 +12,7 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
     <li className={styles.competitionlist__item}>
       <NavLink
         className={styles.competitionlist__link}
-        to={`${competition.id}/teams`}
+        to={`competitions/${competition.id}/teams`}
       >
         <img
           className={styles.competitionlist__itemImg}
@@ -31,7 +31,7 @@ export const Comptetition: FC<IProps> = ({ competition }) => {
         </Link>
         <Link
           className={styles.competition__link}
-          to={`/competitions/${competition.id}/schedule`}
+          to={`/competitions/${competition.id}/schedule/`}
         >
           Schedule
         </Link>

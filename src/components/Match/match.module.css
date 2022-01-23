@@ -6,7 +6,7 @@
   cursor: pointer;
   transition: var(--transition);
 
-  color: var(--gray-light);
+  color: var(--green-light);
 
   font-weight: 900;
   grid-template-columns: 2fr 3fr 1fr  3fr 2fr 1fr;
