@@ -40,7 +40,6 @@ const competitionsSlice = createSlice({
       if (payload) {
         state.competitions = payload;
         state.loading = "idle";
-        console.log(payload);
       } else {
         state.error = "error";
       }

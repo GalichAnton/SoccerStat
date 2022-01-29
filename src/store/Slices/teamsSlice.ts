@@ -39,7 +39,6 @@ const teamsSlice = createSlice({
       if (payload) {
         state.teams = payload;
         state.loading = "idle";
-        console.log(payload);
       } else {
         state.error = "error";
       }

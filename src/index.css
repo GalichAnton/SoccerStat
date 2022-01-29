@@ -25,8 +25,8 @@ body {
   --green: #1DC37E;
   --green-light: #C8F8E4;
   --font-family: "Noto Sans Display", sans-serif;
-  --header-footer: linear-gradient(to right, #3a7bd5, #3a6073);
-  --body: #64b9b9;
+  --header-footer: linear-gradient(to right, #3A7BD5, #3A6073);
+  --body: #64B9B9;
   --aqua: #BDE3DA;
   --argentum: linear-gradient(121.57deg, #FFF 18.77%, rgb(255 255 255 / 66%) 60.15%);
 

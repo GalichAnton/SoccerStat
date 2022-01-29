@@ -20,7 +20,6 @@
   list-style-type: none;
 }
 
-
 .matches__logo {
   width: 30px;
   height: 30px;
@@ -33,7 +32,6 @@
   cursor: pointer;
   transition: var(--transition);
   text-align: center;
-
 
   color: white;
   border: none;
