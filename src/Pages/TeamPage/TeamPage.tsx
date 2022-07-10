@@ -1,6 +1,7 @@
 import React from "react";
-import MainLayout from "../MainLayout/MainLayout";
+
 import Teams from "../../components/Teams/Teams";
+import MainLayout from "../MainLayout/MainLayout";
 
 const TeamPage = () => {
   return (

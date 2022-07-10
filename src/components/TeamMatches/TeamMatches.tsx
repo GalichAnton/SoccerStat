@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import styles from "./teamMatches.module.css";
+
+import { useParams, useSearchParams } from "react-router-dom";
+
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { getTeamMatches } from "../../store/Slices/teamMatchesSlice";
 import DateBar from "../generic/DateBar/DateBar";
 import Loader from "../generic/Loader/Loader";
-import { dateParser } from "../../helpers/DateParser";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { useParams, useSearchParams } from "react-router-dom";
-import { getTeamMatches } from "../../store/Slices/teamMatchesSlice";
 import Match from "../Match/Match";
+import styles from "./teamMatches.module.css";
+
 const TeamteamMatches = () => {
   const dispatch = useAppDispatch();
   const { teamId } = useParams();
   const [limit, setLimit] = useState(10);
   const teamMatches = useAppSelector((state) => state.teamMatches.matches);
   const loading = useAppSelector((state) => state.teamMatches.loading);
-  const error = useAppSelector((state) => state.teamMatches.error);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   useEffect(() => {
     const dateFrom = searchParams.get("dateFrom");
     const dateTo = searchParams.get("dateTo");

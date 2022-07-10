@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
-import styles from "./schedule.module.css";
-import Loader from "../generic/Loader/Loader";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { getSchedule } from "../../store/Slices/scheduleSlice";
+
 import { Link, useParams, useSearchParams } from "react-router-dom";
+
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import {
   filteredTableTeamsSelector,
   searchSelector,
 } from "../../store/selectors/selectors";
-import SearchBar from "../generic/SearchBar/SearchBar";
+import { getSchedule } from "../../store/Slices/scheduleSlice";
 import { searchActions } from "../../store/Slices/searchSlice";
 import Error from "../generic/Error/Error";
+import Loader from "../generic/Loader/Loader";
+import SearchBar from "../generic/SearchBar/SearchBar";
+import styles from "./schedule.module.css";
 const Schedule = () => {
   const { competitionId } = useParams();
   const dispatch = useAppDispatch();
@@ -23,8 +25,8 @@ const Schedule = () => {
     if (competitionId) {
       dispatch(getSchedule(competitionId));
     }
-    const filter = searchParams.get("filter");
-    filter && dispatch(searchActions.setFilter(filter));
+    const filterParam = searchParams.get("filter");
+    if (filterParam) dispatch(searchActions.setFilter(filterParam));
   }, []);
   useEffect(() => {
     if (filter) {

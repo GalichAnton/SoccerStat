@@ -1,18 +1,20 @@
 import { FC } from "react";
-import styles from "./header.module.css";
+
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useAppSelector } from "../../hooks/redux-hooks";
+
 import logo from "../../assets/img/logo.png";
+import { useAppSelector } from "../../hooks/redux-hooks";
+import styles from "./header.module.css";
 const Header: FC = () => {
   const { competitionId, teamId } = useParams();
   const { pathname } = useLocation();
-  const competition = useAppSelector((state) =>
+  const currentCompetition = useAppSelector((state) =>
     state.competitions.competitions.find(
       (competition) => competition.id === Number(competitionId)
     )
   );
 
-  const team = useAppSelector((state) =>
+  const currentTeam = useAppSelector((state) =>
     state.teams.teams.find((team) => team.id === Number(teamId))
   );
   return (
@@ -21,7 +23,7 @@ const Header: FC = () => {
         <div className={styles.header__link}>
           <img className={styles.header__logo} src={logo} alt="logo" />
           <h1 className={styles.header__title}>
-            {competition?.name || team?.name || "Soccer Stat"}
+            {currentCompetition?.name || currentTeam?.name || "Soccer Stat"}
           </h1>
         </div>
 

@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import styles from "./match.module.css";
+
 import { dateParser } from "../../helpers/DateParser";
 import { matchType } from "../../http/ResponseTypes/matchesResponseType";
+import styles from "./match.module.css";
 interface IProps {
   match: matchType;
   teamId?: string;

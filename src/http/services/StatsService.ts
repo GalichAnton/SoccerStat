@@ -1,11 +1,12 @@
 import { AxiosResponse } from "axios";
-import { competitionResponseType } from "../ResponseTypes/competitionResponseType";
+
 import $competitionApi from "../api/competitionApi";
-import { teamsResponseType } from "../ResponseTypes/teamsResponseTypes";
+import $teamsApi from "../api/teamsApi";
+import { competitionResponseType } from "../ResponseTypes/competitionResponseType";
 import { matchesResponseType } from "../ResponseTypes/matchesResponseType";
 import { standingsResponseType } from "../ResponseTypes/standingsResponseType";
 import { teamMatchesResponseType } from "../ResponseTypes/teamMatchesResponseType";
-import $teamsApi from "../api/teamsApi";
+import { teamsResponseType } from "../ResponseTypes/teamsResponseTypes";
 
 export default class StatsService {
   static async getCompetitions(

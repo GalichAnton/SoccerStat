@@ -1,10 +1,11 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import StatsService from "../../http/services/StatsService";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
+
 import {
   teamsResponseType,
   teamType,
 } from "../../http/ResponseTypes/teamsResponseTypes";
+import StatsService from "../../http/services/StatsService";
 
 export interface IState {
   teams: teamType[];
@@ -20,7 +21,7 @@ const initialState: IState = {
 
 export const getTeams = createAsyncThunk(
   "teams/getTeams",
-  async (competitionId: string, thunkApi) => {
+  async (competitionId: string) => {
     const { data }: AxiosResponse<teamsResponseType> =
       await StatsService.getTeams(competitionId);
     return data.teams;

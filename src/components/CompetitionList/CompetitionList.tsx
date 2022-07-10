@@ -1,31 +1,28 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { getCompetitions } from "../../store/Slices/competitionSlice";
-import styles from "./competitionList.module.css";
-import Comptetition from "../Competition/Competition";
-import {
-  filteredCompetitionSelector,
-  searchSelector,
-} from "../../store/selectors/selectors";
-import { useSearchParams } from "react-router-dom";
-import { searchActions } from "../../store/Slices/searchSlice";
-import SearchBar from "../generic/SearchBar/SearchBar";
-import Loader from "../generic/Loader/Loader";
-import { fadeInUp, stagger } from "../../animation";
 
-const CompetitionList = () => {
+import competitions from "@mobx/CompetitionsStore";
+import { motion } from "framer-motion";
+import { observer } from "mobx-react-lite";
+import { useSearchParams } from "react-router-dom";
+
+import { fadeInUp, stagger } from "../../animation";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { searchSelector } from "../../store/selectors/selectors";
+import { searchActions } from "../../store/Slices/searchSlice";
+import Comptetition from "../Competition/Competition";
+import Loader from "../generic/Loader/Loader";
+import SearchBar from "../generic/SearchBar/SearchBar";
+import styles from "./competitionList.module.css";
+
+const CompetitionList = observer(() => {
   const dispatch = useAppDispatch();
-  const loading = useAppSelector((state) => state.competitions.loading);
-  const error = useAppSelector((state) => state.competitions.error);
-  const competitions = useAppSelector(filteredCompetitionSelector);
   const filter = useAppSelector(searchSelector);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const filter = searchParams.get("filter");
-    dispatch(getCompetitions("TIER_ONE"));
-    filter && dispatch(searchActions.setFilter(filter));
+    const filterParam = searchParams.get("filter");
+    competitions.fetchCompetitions("TIER_ONE");
+    if (filterParam) dispatch(searchActions.setFilter(filterParam));
   }, []);
   useEffect(() => {
     if (filter) {
@@ -34,14 +31,14 @@ const CompetitionList = () => {
   }, [filter]);
   return (
     <section className={styles.competitionList}>
-      {loading === "loading" ? (
+      {competitions.loading === "loading" ? (
         <Loader />
-      ) : error ? (
-        <h1>{error}</h1>
+      ) : competitions.error ? (
+        <h1>{competitions.error}</h1>
       ) : (
         <>
           <SearchBar />
-          {!competitions.length ? (
+          {!competitions.competitions.length ? (
             <h1>Competitions with these name not found</h1>
           ) : (
             <motion.div
@@ -51,7 +48,7 @@ const CompetitionList = () => {
               className="relative grid grid-cols-12 gap-4 my-3"
             >
               <ul className={styles.competitionList__wrapper}>
-                {competitions.map((competition) => (
+                {competitions.competitions.map((competition) => (
                   <motion.div
                     variants={fadeInUp}
                     key={competition.id}
@@ -67,6 +64,6 @@ const CompetitionList = () => {
       )}
     </section>
   );
-};
+});
 
 export default CompetitionList;

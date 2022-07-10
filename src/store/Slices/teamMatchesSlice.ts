@@ -1,11 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import StatsService from "../../http/services/StatsService";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
-import {
-  matchesResponseType,
-  matchType,
-} from "../../http/ResponseTypes/matchesResponseType";
+
+import { matchType } from "../../http/ResponseTypes/matchesResponseType";
 import { teamMatchesResponseType } from "../../http/ResponseTypes/teamMatchesResponseType";
+import StatsService from "../../http/services/StatsService";
 
 export interface IState {
   matches: matchType[];
@@ -21,10 +19,11 @@ const initialState: IState = {
 
 export const getTeamMatches = createAsyncThunk(
   "teamMatches/getTeamMatches",
-  async (
-    req: { teamId: string; dateFrom: string | null; dateTo: string | null },
-    thunkApi
-  ) => {
+  async (req: {
+    teamId: string;
+    dateFrom: string | null;
+    dateTo: string | null;
+  }) => {
     const { data }: AxiosResponse<teamMatchesResponseType> =
       await StatsService.getTeamMatches(req);
     return data.matches;

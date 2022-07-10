@@ -1,6 +1,7 @@
 import React from "react";
-import MainLayout from "../MainLayout/MainLayout";
+
 import Matches from "../../components/Matches/Matches";
+import MainLayout from "../MainLayout/MainLayout";
 
 const MatchesPage = () => {
   return (

@@ -1,8 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
-import { competitionType } from "../../http/ResponseTypes/competitionResponseType";
 import { FC } from "react";
-import styles from "./competition.module.css";
+
+import { Link, NavLink } from "react-router-dom";
+
 import ball from "../../assets/img/ball.svg";
+import { competitionType } from "../../http/ResponseTypes/competitionResponseType";
+import styles from "./competition.module.css";
 interface IProps {
   competition: competitionType;
 }

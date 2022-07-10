@@ -1,8 +1,10 @@
 import React from "react";
-import styles from "./page404.module.css";
+
 import { Link } from "react-router-dom";
-import MainLayout from "../MainLayout/MainLayout";
+
 import errorGif from "../../assets/img/error.gif";
+import MainLayout from "../MainLayout/MainLayout";
+import styles from "./page404.module.css";
 const Page404 = () => {
   return (
     <MainLayout>

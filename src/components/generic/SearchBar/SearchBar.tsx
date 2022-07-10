@@ -1,8 +1,9 @@
 import React, { ChangeEvent, FC } from "react";
-import styles from "./searchBar.module.css";
+
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 import { searchSelector } from "../../../store/selectors/selectors";
 import { searchActions } from "../../../store/Slices/searchSlice";
+import styles from "./searchBar.module.css";
 const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const filter = useAppSelector(searchSelector);

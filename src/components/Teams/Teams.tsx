@@ -1,19 +1,16 @@
 import React, { useEffect } from "react";
-import styles from "./teams.module.css";
+
+import { Link, useParams, useSearchParams } from "react-router-dom";
+
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { getTeams } from "../../store/Slices/teamsSlice";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
 import {
   filteredTeamsSelector,
   searchSelector,
 } from "../../store/selectors/selectors";
 import { searchActions } from "../../store/Slices/searchSlice";
+import { getTeams } from "../../store/Slices/teamsSlice";
 import SearchBar from "../generic/SearchBar/SearchBar";
+import styles from "./teams.module.css";
 const Teams = () => {
   const { competitionId } = useParams();
   const dispatch = useAppDispatch();
@@ -24,8 +21,8 @@ const Teams = () => {
     if (competitionId) {
       dispatch(getTeams(competitionId));
     }
-    const filter = searchParams.get("filter");
-    filter && dispatch(searchActions.setFilter(filter));
+    const filterParam = searchParams.get("filter");
+    if (filterParam) dispatch(searchActions.setFilter(filterParam));
   }, []);
   useEffect(() => {
     if (filter) {

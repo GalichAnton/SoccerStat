@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import styles from "./matches.module.css";
-import DateBar from "../generic/DateBar/DateBar";
+
+import { useParams, useSearchParams } from "react-router-dom";
+
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { matchesSelector } from "../../store/selectors/selectors";
 import { getMatches } from "../../store/Slices/matchesSlice";
-import { useParams, useSearchParams } from "react-router-dom";
+import DateBar from "../generic/DateBar/DateBar";
+import Error from "../generic/Error/Error";
 import Loader from "../generic/Loader/Loader";
 import Match from "../Match/Match";
-import Error from "../generic/Error/Error";
+import styles from "./matches.module.css";
 
 const Matches = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +18,7 @@ const Matches = () => {
   const matches = useAppSelector(matchesSelector);
   const loading = useAppSelector((state) => state.matches.loading);
   const error = useAppSelector((state) => state.matches.error);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   useEffect(() => {
     const dateFrom = searchParams.get("dateFrom")!;
     const dateTo = searchParams.get("dateTo")!;

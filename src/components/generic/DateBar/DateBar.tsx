@@ -1,18 +1,20 @@
 import React, { ChangeEvent, FC, SyntheticEvent } from "react";
-import styles from "./dateBar.module.css";
+
+import { useSearchParams } from "react-router-dom";
+
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 import { dateActions } from "../../../store/Slices/dateSlice";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import styles from "./dateBar.module.css";
+
 interface IProps {
   instanseType?: string;
   instanseId?: string;
 }
-const DateBar: FC<IProps> = ({ instanseType, instanseId }) => {
+const DateBar: FC<IProps> = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const dateTo = useAppSelector((state) => state.date.dateTo);
   const dateFrom = useAppSelector((state) => state.date.dateFrom);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const onChangeDateTo = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(dateActions.setDateTo(e.currentTarget.value));
   };

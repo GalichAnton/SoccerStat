@@ -1,10 +1,11 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+
 import MainPage from "./Pages/MainPage/MainPage";
-import { Routes, Route, Navigate } from "react-router-dom";
-import TeamPage from "./Pages/TeamPage/TeamPage";
 import MatchesPage from "./Pages/MatchesPage/MatchesPage";
 import SchedulePage from "./Pages/SchedulePage/SchedulePage";
 import TeamMatchesPage from "./Pages/TeamMatchesPage/TeamMatchesPage";
+import TeamPage from "./Pages/TeamPage/TeamPage";
 function App() {
   return (
     <div className="App">
