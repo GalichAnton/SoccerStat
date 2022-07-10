@@ -36,6 +36,10 @@ class CompetitionsStore {
       competition.name.toLowerCase().includes(searchFilter.filter)
     );
   }
+
+  getCurrentcompetition(id: number) {
+    return this.competitions.find((competition) => competition.id === id);
+  }
 }
 
 export default new CompetitionsStore();

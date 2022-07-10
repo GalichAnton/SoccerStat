@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
 
+import teamMatches from "@mobx/TeamMatchesStore";
+import { observer } from "mobx-react-lite";
 import { useParams, useSearchParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { getTeamMatches } from "../../store/Slices/teamMatchesSlice";
 import DateBar from "../generic/DateBar/DateBar";
 import Loader from "../generic/Loader/Loader";
 import Match from "../Match/Match";
 import styles from "./teamMatches.module.css";
 
-const TeamteamMatches = () => {
-  const dispatch = useAppDispatch();
+const TeamteamMatches = observer(() => {
   const { teamId } = useParams();
   const [limit, setLimit] = useState(10);
-  const teamMatches = useAppSelector((state) => state.teamMatches.matches);
-  const loading = useAppSelector((state) => state.teamMatches.loading);
   const [searchParams] = useSearchParams();
   useEffect(() => {
     const dateFrom = searchParams.get("dateFrom");
     const dateTo = searchParams.get("dateTo");
     if (teamId) {
-      dispatch(getTeamMatches({ teamId, dateFrom, dateTo }));
+      teamMatches.fetchTeamMatches({ teamId, dateFrom, dateTo });
     }
   }, [searchParams]);
 
@@ -30,9 +27,9 @@ const TeamteamMatches = () => {
   return (
     <section className={styles.teamMatches}>
       <DateBar instanseId={teamId} instanseType={"teams"} />
-      {loading === "loading" ? (
+      {teamMatches.loading === "loading" ? (
         <Loader />
-      ) : teamMatches.length ? (
+      ) : teamMatches.matches.length ? (
         <div>
           <div className={styles.teamMatches__head}>
             <span>Date</span>
@@ -43,11 +40,11 @@ const TeamteamMatches = () => {
             <span>Score</span>
           </div>
           <ul className={styles.teamMatches__list}>
-            {teamMatches.slice(0, limit).map((match) => (
+            {teamMatches.matches.slice(0, limit).map((match) => (
               <Match key={match.id} match={match} teamId={teamId} />
             ))}
           </ul>
-          {teamMatches.length > limit && (
+          {teamMatches.matches.length > limit && (
             <button
               className={styles.teamMatches__button}
               onClick={onClickMore}
@@ -61,6 +58,6 @@ const TeamteamMatches = () => {
       )}
     </section>
   );
-};
+});
 
 export default TeamteamMatches;

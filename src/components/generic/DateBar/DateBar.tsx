@@ -1,31 +1,27 @@
 import React, { ChangeEvent, FC, SyntheticEvent } from "react";
 
+import date from "@mobx/DateStore";
+import { observer } from "mobx-react-lite";
 import { useSearchParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
-import { dateActions } from "../../../store/Slices/dateSlice";
 import styles from "./dateBar.module.css";
-
 interface IProps {
   instanseType?: string;
   instanseId?: string;
 }
-const DateBar: FC<IProps> = () => {
-  const dispatch = useAppDispatch();
-  const dateTo = useAppSelector((state) => state.date.dateTo);
-  const dateFrom = useAppSelector((state) => state.date.dateFrom);
+const DateBar: FC<IProps> = observer(() => {
   const [, setSearchParams] = useSearchParams();
   const onChangeDateTo = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(dateActions.setDateTo(e.currentTarget.value));
+    date.setDateTo(e.currentTarget.value);
   };
   const onChangeDateFrom = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(dateActions.setDateFrom(e.currentTarget.value));
+    date.setDateFrom(e.currentTarget.value);
   };
 
   const filterByDate = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (new Date(dateFrom) <= new Date(dateTo)) {
-      setSearchParams({ dateFrom, dateTo });
+    if (new Date(date.dateFrom) <= new Date(date.dateTo)) {
+      setSearchParams({ dateFrom: date.dateFrom, dateTo: date.dateTo });
     } else {
       alert("Incorrect date");
     }
@@ -39,7 +35,7 @@ const DateBar: FC<IProps> = () => {
           className={styles.dateBar__input}
           type="date"
           pattern="\d{4}-\d{2}-\d{2}"
-          value={dateFrom}
+          value={date.dateFrom}
         />
       </div>
       <div className={styles.dateBar__inputContainer}>
@@ -49,7 +45,7 @@ const DateBar: FC<IProps> = () => {
           className={styles.dateBar__input}
           type="date"
           pattern="\d{4}-\d{2}-\d{2}"
-          value={dateTo}
+          value={date.dateTo}
         />
       </div>
       <button onClick={(e) => filterByDate(e)} className={styles.dateBar__btn}>
@@ -57,6 +53,6 @@ const DateBar: FC<IProps> = () => {
       </button>
     </form>
   );
-};
+});
 
 export default DateBar;

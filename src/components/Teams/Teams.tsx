@@ -1,34 +1,29 @@
 import React, { useEffect } from "react";
 
+import searchFilter from "@mobx/SearchStore";
+import teams from "@mobx/TeamStore";
+import { observer } from "mobx-react-lite";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import {
-  filteredTeamsSelector,
-  searchSelector,
-} from "../../store/selectors/selectors";
-import { searchActions } from "../../store/Slices/searchSlice";
-import { getTeams } from "../../store/Slices/teamsSlice";
 import SearchBar from "../generic/SearchBar/SearchBar";
 import styles from "./teams.module.css";
-const Teams = () => {
+
+const Teams = observer(() => {
   const { competitionId } = useParams();
-  const dispatch = useAppDispatch();
-  const filter = useAppSelector(searchSelector);
   const [searchParams, setSearchParams] = useSearchParams();
-  const teams = useAppSelector(filteredTeamsSelector);
   useEffect(() => {
     if (competitionId) {
-      dispatch(getTeams(competitionId));
+      teams.fetchTeams(competitionId);
     }
     const filterParam = searchParams.get("filter");
-    if (filterParam) dispatch(searchActions.setFilter(filterParam));
+    if (filterParam) searchFilter.setFilter(filterParam);
   }, []);
+
   useEffect(() => {
-    if (filter) {
-      setSearchParams({ filter });
+    if (searchFilter.filter) {
+      setSearchParams({ filter: searchFilter.filter });
     } else setSearchParams({});
-  }, [filter]);
+  }, [searchFilter.filter]);
   return (
     <section className={styles.teams}>
       <div>
@@ -39,7 +34,7 @@ const Teams = () => {
           <h2>Founded</h2>
         </div>
         <ul className={styles.teams__list}>
-          {teams.map((team) => (
+          {teams.teams.map((team) => (
             <li key={team.id} className={styles.teams__item}>
               <Link to={`/teams/${team.id}/matches`}>
                 <div className={styles.teams__team}>
@@ -61,6 +56,6 @@ const Teams = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Teams;

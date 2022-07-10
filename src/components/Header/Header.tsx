@@ -1,29 +1,25 @@
 import { FC } from "react";
 
+import competition from "@mobx/CompetitionsStore";
+import teams from "@mobx/TeamStore";
+import { observer } from "mobx-react-lite";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 import logo from "../../assets/img/logo.png";
-import { useAppSelector } from "../../hooks/redux-hooks";
 import styles from "./header.module.css";
-const Header: FC = () => {
+const Header: FC = observer(() => {
   const { competitionId, teamId } = useParams();
   const { pathname } = useLocation();
-  const currentCompetition = useAppSelector((state) =>
-    state.competitions.competitions.find(
-      (competition) => competition.id === Number(competitionId)
-    )
-  );
 
-  const currentTeam = useAppSelector((state) =>
-    state.teams.teams.find((team) => team.id === Number(teamId))
-  );
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>
         <div className={styles.header__link}>
           <img className={styles.header__logo} src={logo} alt="logo" />
           <h1 className={styles.header__title}>
-            {currentCompetition?.name || currentTeam?.name || "Soccer Stat"}
+            {competition.getCurrentcompetition(+competitionId!)?.name ||
+              teams.getCurrentteam(+teamId!)?.name ||
+              "Soccer Stat"}
           </h1>
         </div>
 
@@ -38,6 +34,6 @@ const Header: FC = () => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

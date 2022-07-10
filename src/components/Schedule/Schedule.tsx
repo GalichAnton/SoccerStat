@@ -1,46 +1,41 @@
 import React, { useEffect } from "react";
 
+import table from "@mobx/ScheduleStore";
+import searchFilter from "@mobx/SearchStore";
+import { observer } from "mobx-react-lite";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import {
-  filteredTableTeamsSelector,
-  searchSelector,
-} from "../../store/selectors/selectors";
-import { getSchedule } from "../../store/Slices/scheduleSlice";
-import { searchActions } from "../../store/Slices/searchSlice";
 import Error from "../generic/Error/Error";
 import Loader from "../generic/Loader/Loader";
 import SearchBar from "../generic/SearchBar/SearchBar";
 import styles from "./schedule.module.css";
-const Schedule = () => {
+
+const Schedule = observer(() => {
   const { competitionId } = useParams();
-  const dispatch = useAppDispatch();
-  const filter = useAppSelector(searchSelector);
-  const loading = useAppSelector((state) => state.schedule.loading);
-  const error = useAppSelector((state) => state.schedule.error);
-  const table = useAppSelector(filteredTableTeamsSelector);
   const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     if (competitionId) {
-      dispatch(getSchedule(competitionId));
+      table.fetchSchedule(competitionId);
     }
     const filterParam = searchParams.get("filter");
-    if (filterParam) dispatch(searchActions.setFilter(filterParam));
+    if (filterParam) searchFilter.setFilter(filterParam);
   }, []);
+
   useEffect(() => {
-    if (filter) {
-      setSearchParams({ filter });
+    if (searchFilter.filter) {
+      setSearchParams({ filter: searchFilter.filter });
     } else setSearchParams({});
-  }, [filter]);
+  }, [searchFilter.filter]);
+
   return (
     <section className={styles.schedule}>
-      {loading === "loading" ? (
+      {table.loading === "loading" ? (
         <Loader />
       ) : (
         <div>
-          {error ? (
-            <Error>{error}</Error>
+          {table.error ? (
+            <Error>{table.error}</Error>
           ) : (
             <>
               <SearchBar />
@@ -54,7 +49,7 @@ const Schedule = () => {
                 <span>P</span>
               </div>
               <ul className={styles.schedule__list}>
-                {table?.map((item) => (
+                {table.schedule.table?.map((item) => (
                   <Link
                     key={item.team.id}
                     to={`/teams/${item.team.id}/matches`}
@@ -89,6 +84,6 @@ const Schedule = () => {
       )}
     </section>
   );
-};
+});
 
 export default Schedule;
