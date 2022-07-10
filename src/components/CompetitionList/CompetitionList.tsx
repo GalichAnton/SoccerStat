@@ -1,34 +1,31 @@
 import { useEffect } from "react";
 
 import competitions from "@mobx/CompetitionsStore";
+import searchFilter from "@mobx/SearchStore";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { useSearchParams } from "react-router-dom";
 
 import { fadeInUp, stagger } from "../../animation";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { searchSelector } from "../../store/selectors/selectors";
-import { searchActions } from "../../store/Slices/searchSlice";
 import Comptetition from "../Competition/Competition";
 import Loader from "../generic/Loader/Loader";
 import SearchBar from "../generic/SearchBar/SearchBar";
 import styles from "./competitionList.module.css";
 
 const CompetitionList = observer(() => {
-  const dispatch = useAppDispatch();
-  const filter = useAppSelector(searchSelector);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const filterParam = searchParams.get("filter");
     competitions.fetchCompetitions("TIER_ONE");
-    if (filterParam) dispatch(searchActions.setFilter(filterParam));
+    if (filterParam) searchFilter.setFilter(filterParam);
   }, []);
+
   useEffect(() => {
-    if (filter) {
-      setSearchParams({ filter });
+    if (searchFilter.filter) {
+      setSearchParams({ filter: searchFilter.filter });
     } else setSearchParams({});
-  }, [filter]);
+  }, [searchFilter.filter]);
   return (
     <section className={styles.competitionList}>
       {competitions.loading === "loading" ? (
@@ -38,7 +35,7 @@ const CompetitionList = observer(() => {
       ) : (
         <>
           <SearchBar />
-          {!competitions.competitions.length ? (
+          {!competitions.filteredCompetitions.length ? (
             <h1>Competitions with these name not found</h1>
           ) : (
             <motion.div
@@ -48,7 +45,7 @@ const CompetitionList = observer(() => {
               className="relative grid grid-cols-12 gap-4 my-3"
             >
               <ul className={styles.competitionList__wrapper}>
-                {competitions.competitions.map((competition) => (
+                {competitions.filteredCompetitions.map((competition) => (
                   <motion.div
                     variants={fadeInUp}
                     key={competition.id}

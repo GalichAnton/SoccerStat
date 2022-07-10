@@ -1,3 +1,4 @@
+import searchFilter from "@mobx/SearchStore";
 import { AxiosError, AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
 
@@ -6,7 +7,6 @@ import {
   competitionType,
 } from "../http/ResponseTypes/competitionResponseType";
 import StatsService from "../http/services/StatsService";
-
 class CompetitionsStore {
   competitions: competitionType[] = [];
 
@@ -29,6 +29,12 @@ class CompetitionsStore {
       this.loading = "rejected";
       this.error = e.message;
     }
+  }
+
+  get filteredCompetitions() {
+    return this.competitions.filter((competition) =>
+      competition.name.toLowerCase().includes(searchFilter.filter)
+    );
   }
 }
 

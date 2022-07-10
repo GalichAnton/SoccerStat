@@ -1,14 +1,12 @@
 import React, { ChangeEvent, FC } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
-import { searchSelector } from "../../../store/selectors/selectors";
-import { searchActions } from "../../../store/Slices/searchSlice";
+import searchFilter from "@mobx/SearchStore";
+import { observer } from "mobx-react-lite";
+
 import styles from "./searchBar.module.css";
-const SearchBar: FC = () => {
-  const dispatch = useAppDispatch();
-  const filter = useAppSelector(searchSelector);
+const SearchBar: FC = observer(() => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(searchActions.setFilter(e.currentTarget.value));
+    searchFilter.setFilter(e.currentTarget.value);
   };
 
   return (
@@ -17,12 +15,12 @@ const SearchBar: FC = () => {
         type="text"
         className={styles.searchBar__input}
         placeholder="Search"
-        value={filter}
+        value={searchFilter.filter}
         onChange={onChangeHandler}
       />
       <button className={styles.searchBar__button}>Найти</button>
     </form>
   );
-};
+});
 
 export default SearchBar;

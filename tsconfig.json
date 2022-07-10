@@ -23,6 +23,15 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
+    "paths": {
+      "@core/*": ["src/core/*"],
+      "@components/*": ["src/components/*"],
+      "@mobx/*": ["src/mobxStore/*"],
+      "@store/*": ["src/store/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/sharedUtils/*"]
+    }
   },
   "include": [
     "src"
