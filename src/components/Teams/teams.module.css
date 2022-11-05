@@ -5,33 +5,26 @@
 
 .teams__head {
   display: grid;
-
+  grid-template-columns: 3fr 1fr 1fr;
   padding: 5px;
-
   color: white;
   border-bottom: 1px solid var(--green-light);
-  grid-template-columns: 3fr 1fr 1fr;
 }
 
 .teams__list {
   margin: 0;
   padding: 0;
-
   list-style-type: none;
 }
 
 .teams__item {
   display: grid;
-
+  grid-template-columns: 3fr 1fr 1fr;
   padding: 10px;
-
+  color: var(--green-light);
+  font-weight: 900;
   cursor: pointer;
   transition: var(--transition);
-
-  color: var(--green-light);
-
-  font-weight: 900;
-  grid-template-columns: 3fr 1fr 1fr;
 }
 
 .teams__item:hover {
@@ -41,12 +34,10 @@
 .teams__team {
   display: flex;
   align-items: center;
-
+  justify-self: flex-start;
+  font-size: 18px;
   cursor: pointer;
   transition: var(--transition);
-
-  font-size: 18px;
-  justify-self: flex-start;
 }
 
 .teams__logo {

@@ -1,10 +1,12 @@
 import "./App.css";
-import MainPage from "./Pages/MainPage/MainPage";
-import { Routes, Route, Navigate } from "react-router-dom";
-import TeamPage from "./Pages/TeamPage/TeamPage";
-import MatchesPage from "./Pages/MatchesPage/MatchesPage";
-import SchedulePage from "./Pages/SchedulePage/SchedulePage";
-import TeamMatchesPage from "./Pages/TeamMatchesPage/TeamMatchesPage";
+
+import MainPage from "@pages/MainPage";
+import MatchesPage from "@pages/MatchesPage";
+import SchedulePage from "@pages/SchedulePage";
+import TeamMatchesPage from "@pages/TeamMatchesPage";
+import TeamPage from "@pages/TeamPage";
+import { Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
@@ -27,8 +29,6 @@ function App() {
           element={<TeamPage />}
         />
         <Route path="teams/:teamId/matches" element={<TeamMatchesPage />} />
-
-        {/* <Route path="*" element={<Navigate to="/SoccerStat" />} />*/}
       </Routes>
     </div>
   );

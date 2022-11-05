@@ -1,31 +1,30 @@
+import $competitionApi from "@http/api/competitionApi";
+import $teamsApi from "@http/api/teamsApi";
+import { ICompetitionResponse } from "@interfaces/competition";
+import { IMatchesResponse, ITeamMatchesResponse } from "@interfaces/match";
+import { IStandingResponse } from "@interfaces/standings";
+import { ITeamResponse } from "@interfaces/team";
 import { AxiosResponse } from "axios";
-import { competitionResponseType } from "../ResponseTypes/competitionResponseType";
-import $competitionApi from "../api/competitionApi";
-import { teamsResponseType } from "../ResponseTypes/teamsResponseTypes";
-import { matchesResponseType } from "../ResponseTypes/matchesResponseType";
-import { standingsResponseType } from "../ResponseTypes/standingsResponseType";
-import { teamMatchesResponseType } from "../ResponseTypes/teamMatchesResponseType";
-import $teamsApi from "../api/teamsApi";
 
 export default class StatsService {
   static async getCompetitions(
     plan: string
-  ): Promise<AxiosResponse<competitionResponseType>> {
-    return $competitionApi.get<competitionResponseType>(`?plan=${plan}`);
+  ): Promise<AxiosResponse<ICompetitionResponse>> {
+    return $competitionApi.get<ICompetitionResponse>(`?plan=${plan}`);
   }
 
   static async getTeams(
     competitionId: string
-  ): Promise<AxiosResponse<teamsResponseType>> {
-    return $competitionApi.get<teamsResponseType>(`${competitionId}/teams`);
+  ): Promise<AxiosResponse<ITeamResponse>> {
+    return $competitionApi.get<ITeamResponse>(`${competitionId}/teams`);
   }
 
   static async getMatches(req: {
     competitionId: string;
     dateFrom: string | null;
     dateTo: string | null;
-  }): Promise<AxiosResponse<matchesResponseType>> {
-    return $competitionApi.get<matchesResponseType>(
+  }): Promise<AxiosResponse<IMatchesResponse>> {
+    return $competitionApi.get<IMatchesResponse>(
       `${req.competitionId}/matches`,
       {
         params: { dateFrom: req.dateFrom, dateTo: req.dateTo },
@@ -35,18 +34,16 @@ export default class StatsService {
 
   static async getStandings(
     competitionId: string
-  ): Promise<AxiosResponse<standingsResponseType>> {
-    return $competitionApi.get<standingsResponseType>(
-      `${competitionId}/standings`
-    );
+  ): Promise<AxiosResponse<IStandingResponse>> {
+    return $competitionApi.get<IStandingResponse>(`${competitionId}/standings`);
   }
 
   static async getTeamMatches(req: {
     teamId: string;
     dateFrom: string | null;
     dateTo: string | null;
-  }): Promise<AxiosResponse<teamMatchesResponseType>> {
-    return $teamsApi.get<teamMatchesResponseType>(`${req.teamId}/matches`, {
+  }): Promise<AxiosResponse<ITeamMatchesResponse>> {
+    return $teamsApi.get<ITeamMatchesResponse>(`${req.teamId}/matches`, {
       params: {
         dateFrom: req.dateFrom,
         dateTo: req.dateTo,

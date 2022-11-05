@@ -1,65 +1,56 @@
-.competitionlist__link {
-  transition: var(--transition);
-  text-decoration: none;
-
+.competitionList__link {
   color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
 }
 
-.competitionlist__link:hover {
+.competitionList__link:hover {
   opacity: 0.6;
 }
 
-.competitionlist__item {
+.competitionList__item {
   display: flex;
-  align-self: center;
   flex-direction: column;
+  align-self: center;
   justify-content: space-between;
-
   height: 300px;
   padding: 10px 5px;
-
   color: var(--black);
+  background: var(--argentum);
   border: 2px solid var(--green-light);
   border-radius: 12px;
-  background: var(--argentum);
   box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
 }
 
-.competitionlist__itemImg {
+.competitionList__itemImg {
   width: 150px;
   height: 150px;
   margin: 0 auto;
   object-fit: cover;
 }
 
-.competitionlist__itemName {
+.competitionList__itemName {
   margin: 20px auto 0;
-
-  text-align: center;
-
-  font-size: 18px;
   font-weight: 900;
+  font-size: 18px;
   line-height: 22px;
+  text-align: center;
 }
 
 .competition__links {
   display: flex;
   justify-content: space-between;
-
   width: 80%;
   margin: 0 auto;
 }
 
 .competition__link {
   display: block;
-
   padding: 10px;
-
-  transition: var(--transition);
-
-  border-radius: 10px;
   background: var(--primary);
+  border-radius: 10px;
   box-shadow: 4px 4px 8px 0 rgb(34 60 80 / 20%);
+  transition: var(--transition);
 }
 
 .competition__link:hover {
@@ -71,10 +62,9 @@
     font-size: 14px;
   }
 
-  .competitionlist__item {
+  .competitionList__item {
     height: 250px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -86,7 +76,7 @@
     padding: 5px;
   }
 
-  .competitionlist__itemImg {
+  .competitionList__itemImg {
     width: 120px;
     height: 120px;
   }

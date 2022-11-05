@@ -1,14 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 a {
-  text-decoration: none;
-
   color: var(--green-light);
+  text-decoration: none;
 }
 
 body {
@@ -17,18 +15,23 @@ body {
 
 :root {
   /* colors */
-  --black: #3B434E;
+  --black: #3b434e;
   --white: white;
-  --primary: #7653FC;
-  --primary-hover: #5075D5;
-  --red: #FC836D;
-  --green: #1DC37E;
-  --green-light: #C8F8E4;
+  --primary: #7653fc;
+  --primary-hover: #5075d5;
+  --red: #fc836d;
+  --green: #1dc37e;
+  --green-light: #c8f8e4;
+  --gray-light: #f2f2f2;
   --font-family: "Noto Sans Display", sans-serif;
-  --header-footer: linear-gradient(to right, #3A7BD5, #3A6073);
-  --body: #64B9B9;
-  --aqua: #BDE3DA;
-  --argentum: linear-gradient(121.57deg, #FFF 18.77%, rgb(255 255 255 / 66%) 60.15%);
+  --header-footer: linear-gradient(to right, #3a7bd5, #3a6073);
+  --body: #64b9b9;
+  --aqua: #bde3da;
+  --argentum: linear-gradient(
+    121.57deg,
+    #fff 18.77%,
+    rgb(255 255 255 / 66%) 60.15%
+  );
 
   /* ui */
   --transition: all 0.5s ease-in-out;

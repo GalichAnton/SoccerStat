@@ -1,15 +1,11 @@
 .match__item {
   display: grid;
-
+  grid-template-columns: 2fr 3fr 1fr 3fr 2fr 1fr;
   padding: 10px;
-
+  color: var(--green-light);
+  font-weight: 900;
   cursor: pointer;
   transition: var(--transition);
-
-  color: var(--green-light);
-
-  font-weight: 900;
-  grid-template-columns: 2fr 3fr 1fr  3fr 2fr 1fr;
 }
 
 .match__item:hover {
@@ -28,8 +24,8 @@
 
 @media screen and (max-width: 768px) {
   .match__item {
+    grid-template-columns: 2fr 3fr 1fr 3fr 1fr;
     font-size: 14px;
-    grid-template-columns: 2fr 3fr 1fr  3fr  1fr;
   }
 
   .match__status {

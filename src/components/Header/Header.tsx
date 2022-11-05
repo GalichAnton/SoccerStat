@@ -1,20 +1,23 @@
 import { FC } from "react";
-import styles from "./header.module.css";
+
+import logo from "@assets/img/logo.png";
+import { useAppSelector } from "@hooks/redux-hooks";
+import {
+  competitionByIdSelector,
+  teamByIdSelector,
+} from "@store/selectors/selectors";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useAppSelector } from "../../hooks/redux-hooks";
-import logo from "../../assets/img/logo.png";
+
+import styles from "./header.module.css";
 const Header: FC = () => {
   const { competitionId, teamId } = useParams();
   const { pathname } = useLocation();
-  const competition = useAppSelector((state) =>
-    state.competitions.competitions.find(
-      (competition) => competition.id === Number(competitionId)
-    )
-  );
 
-  const team = useAppSelector((state) =>
-    state.teams.teams.find((team) => team.id === Number(teamId))
+  const competition = useAppSelector(
+    competitionByIdSelector(Number(competitionId))
   );
+  const team = useAppSelector(teamByIdSelector(Number(teamId)));
+
   return (
     <header className={styles.header}>
       <div className={styles.header__wrapper}>

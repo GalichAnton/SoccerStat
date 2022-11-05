@@ -5,35 +5,29 @@
 
 .teamMatches__head {
   display: grid;
-
+  grid-template-columns: 2fr 3fr 1fr 3fr 2fr 1fr;
   padding: 5px;
-
   color: white;
   border-bottom: 1px solid var(--green-light);
-  grid-template-columns: 2fr 3fr 1fr 3fr 2fr 1fr;
 }
 
 .teamMatches__list {
   margin: 0;
   padding: 0;
-
   list-style-type: none;
 }
 
 .teamMatches__button {
   padding: 7px 10px;
-
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: center;
-
   color: white;
-  border: none;
-  border-radius: 10px;
-  background-color: var(--primary);
-
   font-size: 14px;
   line-height: 19px;
+  text-align: center;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .teamMatches__button:hover {
@@ -56,7 +50,7 @@
   }
 
   .teamMatches__head {
-    grid-template-columns: 2fr 3fr 1fr 3fr  1fr;
+    grid-template-columns: 2fr 3fr 1fr 3fr 1fr;
   }
 
   .teamMatches__status {

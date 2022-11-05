@@ -1,6 +1,5 @@
 .header {
   padding: 20px 40px;
-
   color: white;
   background: var(--header-footer);
 }
@@ -21,20 +20,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
 }
 
 .header__linkBox {
   display: flex;
   justify-content: flex-end;
-
   width: 25%;
-
-  transition: var(--transition);
-
-  font-size: 24px;
   font-weight: 900;
+  font-size: 24px;
+  transition: var(--transition);
 }
 
 .header__linkBox:hover {
@@ -48,13 +43,11 @@
 
 .header__logo {
   align-self: center;
-
   width: 50px;
   height: 50px;
 }
 
 .header__title {
   align-self: center;
-
   text-align: center;
 }

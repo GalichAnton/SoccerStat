@@ -1,4 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
+
 import { RootState } from "../store";
 
 export const searchSelector = (state: RootState) => state.search.filter;
@@ -34,3 +35,15 @@ export const filteredTableTeamsSelector = createSelector(
     );
   }
 );
+
+export const competitionByIdSelector = (id: number) => {
+  return createSelector([competitionsSelector], (competitions) => {
+    return competitions.find((competition) => competition.id === id);
+  });
+};
+
+export const teamByIdSelector = (id: number) => {
+  return createSelector([teamsSelector], (teams) => {
+    return teams.find((team) => team.id === id);
+  });
+};

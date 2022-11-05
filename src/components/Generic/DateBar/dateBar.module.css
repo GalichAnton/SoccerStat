@@ -1,0 +1,54 @@
+.dateBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.dateBar__inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  padding: 5px;
+}
+
+.dateBar__input {
+  max-width: 150px;
+  padding: 5px;
+  color: inherit;
+  border: none;
+  border: 1.5px solid #aaa;
+  border-radius: 8px;
+  outline-style: none;
+}
+
+.dateBar__label {
+  align-self: flex-start;
+  padding: 5px;
+  color: white;
+}
+
+.dateBar__btn {
+  padding: 7px 10px;
+  color: white;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dateBar__btn:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .dateBar {
+    flex-direction: column;
+  }
+}
