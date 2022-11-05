@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: app-dev
+    restart: always
+    image: app-dev
+    build:
+      context: .
+    volumes:
+      - /app/node_modules
+      - ./src:/app/src
+    environment:
+      - REACT_APP_API_TOKEN=964422d5d12e44c1bdabae0fef479866
+      - WATCHPACK_POLLING=true
+    ports:
+      - 3000:3000

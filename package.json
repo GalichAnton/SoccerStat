@@ -1,5 +1,5 @@
 {
-  "name": "starterpack",
+  "name": "soccer",
   "homepage": "https://galichanton.github.io/SoccerStat/",
   "version": "0.1.0",
   "private": true,
@@ -33,7 +33,9 @@
     "lint": "eslint --ext .ts,.tsx src --fix",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "stylelint": "stylelint --fix \"**/*.{css,scss}\" "
+    "stylelint": "stylelint --fix \"**/*.{css,scss}\"",
+    "docker": "docker-compose -f docker-compose.dev.yml up",
+    "docker:stop": "docker-compose -f docker-compose.dev.yml down"
   },
   "eslintConfig": {
     "extends": [

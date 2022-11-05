@@ -18,6 +18,10 @@ export const useFilterToUrl = () => {
   }, []);
 
   useEffect(() => {
-    setSearchParams({ filter });
+    if (filter) {
+      setSearchParams({ filter });
+    } else {
+      setSearchParams({});
+    }
   }, [filter]);
 };

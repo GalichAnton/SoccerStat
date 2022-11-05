@@ -66,8 +66,8 @@ interface IScorer {
 }
 
 interface IFullTime {
-  home: number;
-  away: number;
+  homeTeam: number;
+  awayTeam: number;
 }
 
 interface IOdds {

@@ -31,7 +31,7 @@ const Match: FC<IProps> = ({ match, teamId }) => {
       </span>
       <span className={styles.match__status}>{match.status}</span>
       <span>
-        {match.score.fullTime.home} : {match.score.fullTime.away}
+        {match.score.fullTime.homeTeam} : {match.score.fullTime.awayTeam}
       </span>
     </li>
   );
